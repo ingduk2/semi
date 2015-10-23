@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<package name="z-chart" namespace="/" extends="struts-default">
+<!-- 차트!! --> <!-- config매핑 떄문에 ajax로 바로접속을 해서 삑이남.. -->
+<action name="chart">
+    <result>/chart.jsp</result>
+</action>
+<action name="chartdata" class="action_chart.ChartDataAction">
+    <result>/chartdata.jsp</result>
+</action>  
+<!-- 차트 끝!! -->
+</package>
+</struts>

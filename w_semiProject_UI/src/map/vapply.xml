@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="vapply">
+		<insert id="applyinsert" parameterType="vavo">
+			insert into vapply values
+			(vapply_seq.nextVal,1,#{volunteerno},sysdate)
+		</insert>
+		
+		<delete id="deletefk" parameterType="int">
+			<!-- delete from volunteer where volunteerno=#{volunteerno} -->
+			delete from vapply where volunteerno=#{volunteerno}
+		</delete>
+		
+		<delete id="deleteapply" parameterType="fkvo">
+			delete from vapply where volunteerno=#{volunteerno} and memno=#{memno}
+		</delete>
+		
+		<select id="applycnt" parameterType="fkvo" resultType="int">
+			select count(*) cnt from vapply where volunteerno=#{volunteerno} and memno=#{memno}
+		</select>
+    </mapper>

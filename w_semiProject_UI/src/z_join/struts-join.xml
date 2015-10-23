@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<package name="z-join" namespace="/" extends="struts-default">
+
+		<!-- 회원가입 페이지 연결 -->
+		<action name="join">
+			<result>/join.jsp</result>
+		</action>
+		<!-- 회원가입 시 아이디 존재 여부 체크 연결 -->
+		<action name="idchk" class="action_join.IdCheckAction">
+			<result>/idchkres.jsp</result>
+		</action>
+		<!-- 회원가입 시 비밀번호 동일 체크 페이지 연결 -->
+		<action name="joinpwdchk">
+			<result>/joinpwdchk.jsp</result>
+		</action>
+		<!-- 회원가입 시 이메일 존재 여부 체크 연결  -->
+		<action name="emailchk" class="action_join.EmailCheckAction">
+			<result>/emailchkres.jsp</result>
+		</action>
+		<!-- 가입 신청 시 연결 -->
+		<action name="insertMember" class="action_join.InsertMemberAction">
+			<result type="redirectAction">
+				<param name="actionName">login</param>
+			</result>
+		</action>
+		
+		<!-- 로그인 페이지 연결 -->
+		<action name="login">
+			<result>/login.jsp</result>
+		</action>
+		<!-- 로그인 -->
+		<action name="loginchk" class="action_join.LoginAction">
+			<result name="INPUT">/loginErr.jsp</result>
+			<result type="redirectAction">
+					<param name="actionName">${url}</param>
+			</result>
+		</action>
+		<!-- 로그 아웃 -->
+		<action name="Logout" class="action_join.LoginAction" method="logout"> 
+			<result type="redirectAction">
+				<param name="actionName">index</param>
+			</result>
+		</action>
+		
+		<!-- 마이페이지 연결 -->
+		<action name="mypage" class="action_join.SelectUserInfoAction">
+			<result>/mypage.jsp</result>
+		</action>
+		
+		
+		
+
+		
+		
+</package>
+</struts>

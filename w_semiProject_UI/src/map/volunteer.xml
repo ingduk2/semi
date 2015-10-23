@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="volunteer">
+    <insert id="insertvol" parameterType="vvo">
+    	insert into volunteer values
+    	(volunteer_seq.nextVal, #{volunteertitle},#{volunteerstart},#{volunteerend})
+    </insert>
+    
+    <delete id="deletevol" parameterType="int">
+    	delete from volunteer where volunteerno=#{volunteerno}
+    </delete>
+    
+    <select id="selectAll" resultType="vvo">
+    	<!-- select volunteerno,volunteertitle, 
+    	to_char(volunteerstart,'yy-mm-dd') as volunteerstart, 
+    	to_char(volunteerend,'yy-mm-dd') as volunteerend 
+    	from volunteer -->
+    	select * from volunteer order by volunteerno desc
+    	<!-- key값의 싱크를 맞추기 위해 desc 최대값. -->
+    </select>
+    
+    <select id="selectOne" resultType="vvo"  parameterType="int">
+    	<!-- select volunteerno,volunteertitle, 
+    	to_char(volunteerstart,'yy-mm-dd') as volunteerstart, 
+    	to_char(volunteerend,'yy-mm-dd') as volunteerend 
+    	from volunteer where volunteerno=#{volunteerno} -->
+    	
+    	select * from volunteer where volunteerno=#{volunteerno}
+    </select>
+    
+    <select id="getseq" resultType="int">
+    	select volunteerno from volunteer where 
+    	volunteerno=(select max(volunteerno) from volunteer)
+    </select>
+    
+    </mapper>

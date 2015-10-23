@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="board">
+    
+    <!-- 게시판 입력 -->
+    <insert id="insertat" parameterType="bvo"> 
+    insert into board values(#{boardcode},board_seq.nextVal, #{boardtitle}, 
+    #{memid}, #{boardcontent}, sysdate, 0, #{animalno}, board_seq.nextVal, 1, 0,
+    #{boardip}, #{boardnoname}, #{boardpwd} )
+    </insert> 
+    
+     <!-- board 상세보기 -->
+    <select id="detail" parameterType="int" resultType="bvo"> 
+    	select * from board where boardno=#{boardno} 
+    </select>
+     
+    <!--  select * from (select rownum r_num, a.* from (
+		select * from board order by no desc
+		) a
+		)where r_num between #{start} and #{end} -->
+    <!-- 게시판 리스트 -->
+    <select id="board" resultType="bvo" parameterType="bvo">
+   	select * from board (select rownum r_num, a.* from (
+		select * from board order by no desc
+		) a
+		)
+	<if test="chooseType != null">
+		<where>
+			<choose>
+				<when test="chooseType == 1">
+					boardtitle like '%' || #{inputVal} || '%'
+				</when>
+				<when test="chooseType == 2">
+					memid like '%' || #{inputVal} || '%'
+				</when>
+				<when test="chooseType == 3">
+					boardcontent like '%' || #{inputVal} || '%'
+				</when>
+				<otherwise></otherwise>
+			</choose>		
+		</where>
+	</if>
+	 and r_num between #{start} and #{end] order by boardno desc  
+   	</select>
+    
+    <!-- 게시판 조회수 -->
+    <update id="hit" parameterType="int">
+    	update board set boardhit=boardhit+1 where boardno=#{boardno}
+    </update>
+    
+    <!-- 게시판 상세보기 삭제 -->
+    <delete id="bodelete" parameterType="int">
+    	delete board where boardno=#{boardno}
+    </delete>
+    
+    <update id="boupdate" parameterType="bvo">
+    	update board set boardtitle=#{boardtitle}, boardcontent=#{boardcontent}, 
+    	boarddate=sysdate where boardno=#{boardno} 
+    </update>
+    
+    <select id="list" parameterType="pvo" resultType="bvo">
+		select * from (select rownum r_num, a.* from (
+		select * from board order by no desc
+		) a
+		)where r_num between #{start} and #{end}
+	</select>
+	
+	<!-- 이거 뭐라고했음? 필요한 이유 - -->
+	<!-- 아마 넘어다닐 수 있는 최대 제한을 걸기 윟서. -->
+	<select id="totalcount" resultType="int">
+		select count(*) cnt from board
+	</select>
+    
+    
+<!--     <insert id="adopInsert" parameterType="advo"> -->
+<!--     	insert into AdoptionInfo values( -->
+<!--     	adoptioninfo_seq.nextVal, #{memid}, #{animalno}, 0, -->
+<!--         #{adoptexp}, #{adoptresult}, #{adoptanimal}, #{adoptalone}, -->
+<!--         #{adopthouse}, #{adoptincome}, #{adoptempty}, #{adoptmoveplan},     	 -->
+<!--     	#{adoptvolunteer}, #{adoptfeedback}, #{adoptage} -->
+<!--     	) -->
+<!--     </insert> -->
+    
+    </mapper>

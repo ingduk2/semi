@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- mybatis document 시작하기에서 복사 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+
+	<!-- 회원 가입 insert _ DBT : member -->
+	<insert id="insertmember" parameterType="mvo">
+		insert into member values(
+			#{memid}, #{memname}, #{mememail}, #{mempwd}, #{membirth}, #{memtel}, 
+			#{mempost}, #{memjibunaddr}, #{memdoroaddr} 
+		)
+	</insert>
+	
+	<!-- 아이디 존재 여부 체크 -->
+	<select id="idchk" parameterType="mvo" resultType="int">
+		select count(*) cnt from member where memid=#{memid}
+	</select>
+	
+	<!-- 아이디-비밀번호 일치 여부 -->
+	<select id="pwdchk" parameterType="mvo" resultType="int">
+		select count(*) cnt from member where memid=#{memid} and mempwd=#{mempwd}
+	</select>
+	
+	<!-- 이메일 존재 여부 체크 -->
+	<select id="emailchk" parameterType="mvo" resultType="int">
+		select count(*) cnt from member where mememail=#{mememail}
+	</select>
+	
+	<!-- 아이디로 유저 정보 추출 -->
+	<select id="selectuserinfo" parameterType="String" resultType="mvo">
+		select * from member where memid=#{memid}
+	</select>
+	
+
+</mapper>

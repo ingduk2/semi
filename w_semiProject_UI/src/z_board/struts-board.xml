@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<package name="z-board" namespace="/" extends="struts-default">
+
+	<!-- 쓰기폼으로 -->
+	<action name="boardwrite">
+		<result>/boardwrite.jsp</result>
+	</action>
+	
+	
+	<!-- 게시판 입력 -->
+	<action name="insertat" class="action_board.BoardInsertAction">
+	<result type="redirectAction">
+		<param name="actionName">/board</param>
+	</result>
+   </action>
+	
+		
+	
+	<!-- 상세보기폼 -->
+	<action name="boarddetail" class="action_board.BoardDetailAction">
+		<result>/boarddetail.jsp</result>
+	</action>
+	
+	
+	<!-- 게시판 리스트 -->
+	<action name="board" class="action_board.BoardAction">
+		<result>/board.jsp</result>
+	</action>
+	
+   	<!-- 상세보기 삭제 --> 
+	<action name="boarddelete" class="action_board.BoardDeleteAction">
+		<result type="redirectAction">
+		<param name="actionName">/board</param>
+		</result>
+	</action>
+	
+	
+	
+	<!-- 상세보기 수정 -->
+		<!-- 수정 불러오기 -->
+	<action name="boardup" class="action_board.BoardDetailAction">
+		<result>/boardupdate.jsp</result>
+	</action>
+	
+		<!-- 수정 하기 -->
+	<action name="boardupdate" class="action_board.BoardUpdateAction">
+		<result type="redirectAction">
+			<param name="actionName">/board</param>
+		</result>
+	</action>
+
+</package>
+</struts>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<package name="z-calendar" namespace="/" extends="struts-default">
+<!-- 봉사 달력!! -->
+<action name="cal">
+	<result>/ingdukcallendar.jsp</result>
+</action>
+<action name="ainsert" class="action_calendar.volInsertAction">
+	<result>/ingdukcallendar.jsp</result>
+</action>
+<action name="delete" class="action_calendar.volDeleteAction">
+	<result>/ingdukcallendar.jsp</result>
+</action>
+<action name="selectAll" class="action_calendar.volList">
+	<result>/ingdukcallendar.jsp</result>
+</action>
+<action name="selectOne" class="action_calendar.volListOne">
+	<result>/ingdukcallendar.jsp</result>
+</action>
+<action name="applyservice" class="action_calendar.volApplyAction">
+	<result>/ingdukcallendar.jsp</result>
+</action>
+<action name="getseq" class="action_calendar.volGetseq">
+	 <result>/getseq.jsp</result> 
+	<result>/ingdukcallendar.jsp</result>
+</action>
+<action name="applydelete" class="action_calendar.volApplyDeleteAction">
+	<result>/ingdukcallendar.jsp</result>
+</action>
+
+</package>
+</struts>
