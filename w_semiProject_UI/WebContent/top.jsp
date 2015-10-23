@@ -37,9 +37,10 @@
 								    <li><a href="ib">발견보고</a></li>
 								    <li><a href="">보호동물</a></li>
 								    <li><a href="">분양대기</a></li>
-								    <li><a href="">봉사활동</a></li>
+								    <li><a href="cal">봉사활동</a></li>
 								    <li><a href="board">커뮤니티</a></li>
 								    <li><a href="">문의사항</a></li>
+								    <li><a href="chart">차트</a><li>
 								    <li><a href="mypage">MyPage</a></li>
 	  						</ul>
 						</td>  

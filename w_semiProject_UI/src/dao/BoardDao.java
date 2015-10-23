@@ -76,7 +76,7 @@ public class BoardDao {
  	
  	public int getTotalCount(){
  		SqlSession ss=FactoryService.getFactory().openSession();
- 		int cnt=ss.selectOne("board.totalcnt");
+ 		int cnt=ss.selectOne("board.totalcount");
  		ss.close();
  		return cnt;
  	}

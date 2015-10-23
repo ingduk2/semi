@@ -4,8 +4,8 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="animal"> <!-- avo -->
 	<insert id="insertanimal" parameterType="avo">
-		insert into animal values(animal_seq.nextVal, '-','-',
-		#{animalname},1,'수컷','소',1,#{animalfeature},'-',sysdate,#{animalimg})
+		insert into animal values(animal_seq.nextVal, #{animalspecies},#{animalbreed},
+		#{animalname},#{animalage},#{animalsex},#{animalsize},#{animalweight},#{animalfeature},#{animalregion},sysdate,#{animalimg})
 		
 	</insert>
 	
@@ -18,5 +18,9 @@
 	
 	<select id="gettotalcnt" resultType="int">
 		select count(*) cnt from animal
+	</select>
+	
+	<select id="getdetail" parameterType="int" resultType="avo">
+		select * from animal where animalno=#{animalno}
 	</select>
 </mapper>

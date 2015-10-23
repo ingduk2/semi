@@ -4,8 +4,13 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 <package name="z-img" namespace="/" extends="struts-default">
-	<action name="imgwrite">
+
+<action name="imgwrite">
 	<result>/imgwrite.jsp</result>
+</action>
+
+<action name="animalboardwrite">
+	<result>/animalboardwrite.jsp</result>
 </action>
 
 <action name="uploadres" class="action_img.UploadAction">
@@ -13,8 +18,22 @@
 		<param name="actionName">ib</param>
 	</result>
 </action>
+
 <action name="ib" class="action_img.imgListAction">
 	<result>/ib.jsp</result>
 </action>
+
+<action name="comminsertimg" class="action_board.CommentInsertAction">
+		<result type="redirectAction">
+			<param name="actionName">imgdetail</param>
+		</result>
+</action>
+
+<action name="imgdetail" class="action_img.imgDetailAction">
+	<result>/imgboarddetail.jsp</result>
+</action>
+
+
+
 </package>
 </struts>

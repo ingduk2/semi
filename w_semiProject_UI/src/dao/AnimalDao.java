@@ -36,4 +36,11 @@ public class AnimalDao {
 		ss.close();
 		return cnt;
 	}
+	
+	public AnimalVO getDetail(int animalno){
+		SqlSession ss=FactoryService.getFactory().openSession();
+		AnimalVO avo=ss.selectOne("animal.getdetail",animalno);
+		ss.close();
+		return avo;
+	}
 }

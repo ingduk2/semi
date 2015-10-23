@@ -56,8 +56,17 @@
 		</table>							
 		
 		<table><tr height="30px"><!-- 높이 조절용 칸 떼우기 --><td></td></tr></table>
-		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('boardup')" >　수   정　</button>
-		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('boarddelete')">　삭　　제　</button>
+		
+		<s:url id="goreply" action="">
+		</s:url>
+		<s:url id="goupdate" action="boardup">
+			<s:param name="boardno" value="vo.boardno"></s:param>
+		</s:url>
+		<s:url id="godelete" action="boarddelete">
+			<s:param name="boardno" value="vo.boardno"></s:param>
+		</s:url>
+		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('boardup?boardno=${vo.boardno}')" >　수   정　</button>
+		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('boarddelete?boardno=${vo.boardno}')">　삭　　제　</button>
 		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('board')">　목　　록　</button>
 	</div>		
 

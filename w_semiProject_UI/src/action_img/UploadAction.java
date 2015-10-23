@@ -34,8 +34,8 @@ public class UploadAction extends ActionSupport implements Preparable, ModelDriv
 	public String execute() throws Exception {
 		HttpServletRequest req=
 				ServletActionContext.getRequest();
-		System.out.println(req.getContextPath());
-		System.out.println(req.getRealPath("/upload"));
+//		System.out.println(req.getContextPath());
+//		System.out.println(req.getRealPath("/upload"));
 		System.out.println("-----------------");
 		System.out.println(avo.getAnimalname());
 		System.out.println("FilePath: "+upload.getPath());
@@ -59,6 +59,29 @@ public class UploadAction extends ActionSupport implements Preparable, ModelDriv
 		//파일을 복사하는 작업이 필요하다.
 		FileService service=new FileService();
 		String path= service.saveFile(upload, basePath, uploadFileName);
+		
+//		animalno 
+//		animalspecies 
+//		animalbreed 
+//		animalname 
+//		animalage 
+//		animalsex 
+//		animalsize 
+//		animalweight 
+//		animalfeature 
+//		animalregion 
+//		animaldate 
+//		animalimg 
+		System.out.println(avo.getAnimalno());
+		System.out.println(avo.getAnimalspecies());
+		System.out.println(avo.getAnimalbreed());
+		System.out.println(avo.getAnimalname());
+		System.out.println(avo.getAnimalage());
+		System.out.println(avo.getAnimalsex());
+		System.out.println(avo.getAnimalsize());
+		System.out.println(avo.getAnimalweight());
+		System.out.println(avo.getAnimalfeature());
+		
 		
 		
 		//vo에 파일 이름을 저장

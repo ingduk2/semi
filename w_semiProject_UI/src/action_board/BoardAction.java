@@ -42,7 +42,7 @@ public class BoardAction implements Action, Preparable, ModelDriven<BoardVO>{
 		int numPerBlock= 5;
 		int total= BoardDao.getDao().getTotalCount();
 		System.out.println("Total : "+total);
-		String url="boardList";
+		String url="board";
 		Paging page= new Paging(total, nowPage, numPerPage, numPerBlock, url);
 		
 		//페이징을 할 때 마다 start와 end값을 넘겨야 한다.
@@ -53,7 +53,7 @@ public class BoardAction implements Action, Preparable, ModelDriven<BoardVO>{
 		int end= start + numPerPage -1;
 		System.out.println("Start : "+start);
 		System.out.println("End : "+end);
-		
+		 
 		//페이지 영역값을  Dao에게 전달 후 list를 반
 		
 		//이렇게 하면 검색을 페이징 할 수 없다. 검색 기능안에 페이징을 집어넣어서 불러와야하는디..되나
@@ -63,6 +63,13 @@ public class BoardAction implements Action, Preparable, ModelDriven<BoardVO>{
 		//list=BoardDao.getDao().getPage(new PaginVO(start, end));
 		list = BoardDao.getDao().getBoard(vo); //검색 가능.
 		return SUCCESS;
+	}
+	
+	public void setNowPage(int nowPage) {
+		this.nowPage = nowPage;
+	}
+	public String getPagingCode() {
+		return pagingCode;
 	}
 
 }

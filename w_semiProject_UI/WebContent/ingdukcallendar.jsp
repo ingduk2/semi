@@ -261,7 +261,7 @@ function admin(){
 </head>
 <body>
  <div id='calendar'>
- <input type="hidden" id="volunteer" value="adm"/> <!-- $sessinscope["inputid"] -->
+ <input type="hidden" id="volunteer" value="${sessionScope['loginid']}"/> <!-- $sessinscope["inputid"] -->
  <%-- <input type="hidden" name="no" value="${param.no }"> --%>
  </div>
 </body>

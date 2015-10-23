@@ -25,7 +25,6 @@
 </action>
 <action name="getseq" class="action_calendar.volGetseq">
 	 <result>/getseq.jsp</result> 
-	<result>/ingdukcallendar.jsp</result>
 </action>
 <action name="applydelete" class="action_calendar.volApplyDeleteAction">
 	<result>/ingdukcallendar.jsp</result>

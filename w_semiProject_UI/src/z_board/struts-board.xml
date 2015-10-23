@@ -14,7 +14,7 @@
 	<!-- 게시판 입력 -->
 	<action name="insertat" class="action_board.BoardInsertAction">
 	<result type="redirectAction">
-		<param name="actionName">/board</param>
+		<param name="actionName">board</param>
 	</result>
    </action>
 	
@@ -34,11 +34,9 @@
    	<!-- 상세보기 삭제 --> 
 	<action name="boarddelete" class="action_board.BoardDeleteAction">
 		<result type="redirectAction">
-		<param name="actionName">/board</param>
+		<param name="actionName">board</param>
 		</result>
 	</action>
-	
-	
 	
 	<!-- 상세보기 수정 -->
 		<!-- 수정 불러오기 -->
@@ -49,9 +47,10 @@
 		<!-- 수정 하기 -->
 	<action name="boardupdate" class="action_board.BoardUpdateAction">
 		<result type="redirectAction">
-			<param name="actionName">/board</param>
+			<param name="actionName">board</param>
 		</result>
 	</action>
 
+	
 </package>
 </struts>

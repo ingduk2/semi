@@ -40,7 +40,7 @@
 			</result>
 		</action>
 		<!-- 로그 아웃 -->
-		<action name="Logout" class="action_join.LoginAction" method="logout"> 
+		<action name="logout" class="action_join.LoginAction" method="logout"> 
 			<result type="redirectAction">
 				<param name="actionName">index</param>
 			</result>

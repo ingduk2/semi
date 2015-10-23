@@ -37,7 +37,7 @@
 			
 			<table><!-- 넘버링이랑, 검색, 글쓰기버튼,  --> 
 				<thead> 
-					<tr> <td colspan="5"> <!-- 페이징작업부분입니다. --> Numbering  </td> </tr>
+					<tr> <td colspan="5"> <!-- 페이징작업부분입니다. --> <s:property value="pagingCode" escape="false"/>  </td> </tr>
 		
 		         <form action="" method="post">
 					<tr>  
