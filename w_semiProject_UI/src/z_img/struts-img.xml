@@ -26,8 +26,16 @@
 <action name="comminsertimg" class="action_board.CommentInsertAction">
 		<result type="redirectAction">
 			<param name="actionName">imgdetail</param>
+			<param name="animalno">${animalno}</param>
 		</result>
 </action>
+
+<!-- <action name="commIn" class="action.CommInAction">
+	<result type="redirectAction">
+		<param name="actionName">view</param>
+		<param name="no">${no}</param>
+	</result>
+</action> -->
 
 <action name="imgdetail" class="action_img.imgDetailAction">
 	<result>/imgboarddetail.jsp</result>

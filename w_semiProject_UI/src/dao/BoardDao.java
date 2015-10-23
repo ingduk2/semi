@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import service.FactoryService;
 import vo.AdoptionInfoVO;
 import vo.BoardVO;
+import vo.CommBoardVO;
 import vo.PaginVO;
 
 public class BoardDao {
@@ -81,4 +82,17 @@ public class BoardDao {
  		return cnt;
  	}
  	
+ 	public void commInsert(CommBoardVO cbvo){
+ 		SqlSession ss=FactoryService.getFactory().openSession(true);
+ 		ss.insert("board.comminsert",cbvo);
+ 		ss.close();
+ 		
+ 	}
+ 	
+ 	public List<CommBoardVO> commList(int boardno){
+ 		SqlSession ss=FactoryService.getFactory().openSession();
+ 		List<CommBoardVO> list=ss.selectList("board.commlist",boardno);
+ 		ss.close();
+ 		return list;
+ 	}
 }

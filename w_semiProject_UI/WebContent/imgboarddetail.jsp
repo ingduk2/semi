@@ -55,16 +55,16 @@
 			<tr>	
 				<th>제목</th>	
 				<td colspan="5" class="bgwhite"> 
-					<!-- 이안에 제목을 넣어주세요 --> 
+					${bvo.boardtitle }
 				</td>					
 			</tr>
 			<tr>	
 				<th>글쓴이</th>
-				<td class="bgwhite">${sessionScope['loginid']}</td>	
+				<td class="bgwhite">${bvo.memid}</td>	
 				<th>작성일</th>	
-				<td class="bgwhite">-1-1-1</td>	
+				<td class="bgwhite">${bvo.boarddate }</td>	
 				<th>조회수</th>	
-				<td class="bgwhite">0<!--hit--></td>	
+				<td class="bgwhite">${bvo.boardhit}<!--hit--></td>	
 			</tr>
 			<tr>	
 				<th colspan="6">${avo.animalfeature}</th>						
@@ -125,7 +125,7 @@
 			
 			<tr height="500px">	<!-- 내용 들어가면 height="500px" 빼줘야함 -->
 				<td colspan="6" class="bgwhite" >
-					<!-- 내용들어갈 곳입니다. -->
+					${bvo.boardcontent}
 				</td>						
 			</tr>
 			
@@ -139,6 +139,8 @@
 				<form method="post" action="comminsertimg">
 			    	<div class="input-group col-xs-12">
 			    		<input type="hidden" name="memid" value="${sessionScope['loginid']}"/>
+			    		<input type="hidden" name="boardno" value="${bvo.boardno}"/>
+			    		<input type="hidden" name="animalno" value="${avo.animalno}"/>
 			        	<input type="text" name="commcontent" class="form-control input-sm " placeholder="Your comments">
 			            	<span class="input-group-btn">
 			                    <span class="btn btn-success btn-sm">&nbsp;
@@ -159,13 +161,23 @@
 					<table width="100%">
 						<tr> <th style="border-left: 1px solid #f0fff0;">ID</th> <th  class="reply">Comment</th> <th>Date</th> </tr>
 						<!-- 댓글 부분 이곳에서 반복처리하면 됩니다. 시작 -->
+						
+			<%-- 			 <s:iterator value="list"> <!-- 갑가져오기 -->
+			 <tr> <td width="30px"><s:property value="boardno"/></td><td><a href="boarddetail?boardno=${boardno}"><s:property value="boardtitle"/></a></td>
+			 <td><s:property value="memid"/></td><td><s:property value="boarddate"/></td>
+			 <td><s:property value="boardhit"/></td> </tr>
+			 </s:iterator> --%>
+						
+						<s:iterator value="list">
 						<tr> 
-							<td>${sessionScope['loginid']}</td>
+							<td><s:property value="memid"/></td>
 							<td class="reply">
-								Comment내용이나오겠지,아마도!
+								<s:property value="commcontent"/>
+								<!-- Comment내용이나오겠지,아마도! -->
 							</td>
-							<td>Date나옴</td> 
+							<td><s:property value="commdate"/></td> 
 						</tr>
+						</s:iterator>
 						<!-- 끝 -->
 					</table>					
 				</td>

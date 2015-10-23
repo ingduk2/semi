@@ -46,16 +46,16 @@ ModelDriven<BoardVO>, ServletRequestAware {
    public String execute() throws Exception {
 		System.out.println(vo.getMemid());
 		vo.setBoardip(boardip.getRemoteAddr());
-		vo.setBoardcode(100);
-		vo.setAnimalno(1);
+		
+		//vo.setAnimalno(100);
 		//vo.setMemid();
-		vo.setBoardnopwd("asdads");
+		vo.setBoardnopwd("1");
 //		vo.setBoardcontent("ads");
 //		vo.setBoarddate("Dfsa");
 //		vo.setBoardhit(0);
 //		vo.setBoardlvl(1);
 //		vo.setBoardno(1);
-		vo.setBoardnoname("dgsga");
+		vo.setBoardnoname("1");
 //		vo.setBoardref(1);
 //		vo.setBoardseq(1);
 //		vo.setBoardtitle("sfd");

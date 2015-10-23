@@ -52,7 +52,7 @@ div{
 			
 			<c:if test="${not doneLoop }">
 			<div class="col-md-3">
-				<a href="#" class="thumbnail">
+				<a href="imgdetail?animalno=${list[i+1].animalno}" class="thumbnail">
 					<img src="upload/${list[i+1].animalimg}"  style="width: 150px; height: 150px">
 					<p>${list[i+1].animalno}<br>${list[i+1].animalspecies}<br>${list[i+1].animalbreed}<br>
 						${list[i+1].animalname}<br>${list[i+1].animalage}<br>${list[i+1].animalsex}<br>
@@ -67,7 +67,7 @@ div{
 			
 			<c:if test="${not doneLoop }">
 			<div class="col-md-3">
-				<a href="#" class="thumbnail">
+				<a href="imgdetail?animalno=${list[i+2].animalno}" class="thumbnail">
 					<img src="upload/${list[i+2].animalimg}"  style="width: 150px; height: 150px">
 					<p>${list[i+2].animalno}<br>${list[i+2].animalspecies}<br>${list[i+2].animalbreed}<br>
 						${list[i+2].animalname}<br>${list[i+2].animalage}<br>${list[i+2].animalsex}<br>
@@ -82,7 +82,7 @@ div{
 			
 			<c:if test="${not doneLoop }">
 			<div class="col-md-3">
-				<a href="#" class="thumbnail">
+				<a href="imgdetail?animalno=${list[i+3].animalno}" class="thumbnail">
 					<img src="upload/${list[i+3].animalimg}"  style="width: 150px; height: 150px">
 					<p>${list[i+3].animalno}<br>${list[i+3].animalspecies}<br>${list[i+3].animalbreed}<br>
 						${list[i+3].animalname}<br>${list[i+3].animalage}<br>${list[i+3].animalsex}<br>

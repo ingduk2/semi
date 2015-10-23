@@ -89,4 +89,13 @@
 <!--     	) -->
 <!--     </insert> -->
     
+    <insert id="comminsert" parameterType="cbvo">
+    	insert into commboard values(commboard_seq.nextVal,#{boardno},#{commcontent},#{memid},
+    	#{commip},sysdate)
+    </insert>
+    
+    <select id="commlist" resultType="cbvo" parameterType="int">
+    	select * from commboard where boardno=#{boardno}
+    </select>
+    
     </mapper>

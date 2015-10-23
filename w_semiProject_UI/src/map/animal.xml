@@ -27,4 +27,13 @@
 	<select id="getseq" resultType="int">
 		select max(animalno) from animal
 	</select>
+	
+	<select id="getdetailb" parameterType="int" resultType="bvo">
+		select * from board where animalno=#{animalno}
+	</select> 
+	
+	<update id="hit" parameterType="int">
+    	update board set boardhit=boardhit+1 where animalno=#{animalno}
+    </update>
+	
 </mapper>

@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import service.FactoryService;
 import vo.AnimalVO;
+import vo.BoardVO;
 import vo.PaginVO;
 
 public class AnimalDao {
@@ -49,5 +50,18 @@ public class AnimalDao {
 		int seq=ss.selectOne("animal.getseq");
 		ss.close();
 		return seq;
+	}
+	
+	public BoardVO getDetailB(int animalno){
+		SqlSession ss=FactoryService.getFactory().openSession();
+		BoardVO bvo=ss.selectOne("animal.getdetailb",animalno);
+		ss.close();
+		return bvo;
+	}
+	
+	public void hit(int animalno){
+		SqlSession ss=FactoryService.getFactory().openSession(true);
+		ss.update("animal.hit",animalno);
+		ss.close();
 	}
 }
