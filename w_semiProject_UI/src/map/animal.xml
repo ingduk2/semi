@@ -23,4 +23,8 @@
 	<select id="getdetail" parameterType="int" resultType="avo">
 		select * from animal where animalno=#{animalno}
 	</select>
+	
+	<select id="getseq" resultType="int">
+		select max(animalno) from animal
+	</select>
 </mapper>

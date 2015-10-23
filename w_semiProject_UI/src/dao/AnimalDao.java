@@ -43,4 +43,11 @@ public class AnimalDao {
 		ss.close();
 		return avo;
 	}
+	
+	public int getSeq(){
+		SqlSession ss=FactoryService.getFactory().openSession();
+		int seq=ss.selectOne("animal.getseq");
+		ss.close();
+		return seq;
+	}
 }

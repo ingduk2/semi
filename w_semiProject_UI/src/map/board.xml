@@ -8,7 +8,7 @@
     <insert id="insertat" parameterType="bvo"> 
     insert into board values(#{boardcode},board_seq.nextVal, #{boardtitle}, 
     #{memid}, #{boardcontent}, sysdate, 0, #{animalno}, board_seq.nextVal, 1, 0,
-    #{boardip}, #{boardnoname}, #{boardpwd} )
+    #{boardip}, #{boardnoname}, #{boardnopwd} )
     </insert> 
     
      <!-- board 상세보기 -->

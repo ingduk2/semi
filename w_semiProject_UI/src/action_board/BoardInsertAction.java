@@ -49,7 +49,7 @@ ModelDriven<BoardVO>, ServletRequestAware {
 		vo.setBoardcode(100);
 		vo.setAnimalno(1);
 		//vo.setMemid();
-		vo.setBoardpwd("asdads");
+		vo.setBoardnopwd("asdads");
 //		vo.setBoardcontent("ads");
 //		vo.setBoarddate("Dfsa");
 //		vo.setBoardhit(0);

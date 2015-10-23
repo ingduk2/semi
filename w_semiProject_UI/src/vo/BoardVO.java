@@ -4,7 +4,7 @@ public class BoardVO { //�Խ���
 	private int boardcode, boardno, boardhit, animalno; //�Խ����ڵ�, �Խù���ȣ, ��ȸ�� ������Ϲ�ȣ
 	private int boardref, boardseq, boardlvl; // ���(����), ���(��ۼ���), ��۰���(Ʈ���ܰ�)
 	private String boardtitle, memid, boardcontent, boarddate; //����, ȸ�����̵�(�ۼ���), ����, �ۼ����� 
-	private String boardip, boardnoname, boardpwd; //�ۼ��� ip, ��ȸ���̸�, ��ȸ�����
+	private String boardip, boardnoname, boardnopwd; //�ۼ��� ip, ��ȸ���̸�, ��ȸ�����
 	private String chooseType, inputVal; // �پƳ��� �����̿��� ����...
 	private int start, end;
 	
@@ -110,11 +110,12 @@ public class BoardVO { //�Խ���
 	public void setBoardnoname(String boardnoname) {
 		this.boardnoname = boardnoname;
 	}
-	public String getBoardpwd() {
-		return boardpwd;
+	public String getBoardnopwd() {
+		return boardnopwd;
 	}
-	public void setBoardpwd(String boardpwd) {
-		this.boardpwd = boardpwd;
+	public void setBoardnopwd(String boardnopwd) {
+		this.boardnopwd = boardnopwd;
 	}
+	
 
 }

@@ -17,13 +17,16 @@
 /* 	align: center; */
 /* 	text-align: center;	 */
 /* } */
+div{
+	border: 1px solid red;
+}
 </style>
 
 <h2>
 	<img src="img/imgboardtitle.png" width="300px">
 </h2>
 
-	<input type="button" value="click" onclick="goUrl('animalboardwrite')"/>
+	
 <!-- <div id="container1" style="background-color: blue; border:1px solid red"> -->
 	<div class="col-md-offset-2 col-md-8 center">
 			
@@ -92,10 +95,17 @@
 				</c:if>
 			</c:if>
 			</div>
+			
+			
+			
 			</c:forEach>
-			<s:property value="pagingCode" escape="false"/>
+			
 			
 			</c:if>
+	</div><p>
+	<div>
+	<input type="button" value="click" onclick="goUrl('animalboardwrite')"/><p>
+	<s:property value="pagingCode" escape="false"/>
 	</div>
 	
 <!-- </div> -->

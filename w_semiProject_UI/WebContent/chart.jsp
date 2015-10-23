@@ -1,11 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
  pageEncoding="EUC-KR"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>basicChart.jsp</title>
+
+<%@ include file="top.jsp" %>
+
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="http://code.highcharts.com/highcharts.js"></script>
@@ -126,8 +124,10 @@ function test() {
 	  test();
 	 });
 </script>
-</head>
-<body>
+
  <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-</body>
-</html>
+
+ 
+ 
+ <%@ include file="bottom.jsp" %>
+ 

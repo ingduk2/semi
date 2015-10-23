@@ -297,13 +297,14 @@
 				
 				<tr>	
 					<td colspan="2"  height="500px">
-						<textarea class="form-control" rows="10" id="comment" placeholder="내용을 입력하세요"></textarea>
+						<textarea class="form-control" name="boardcontent" rows="10" id="comment" placeholder="내용을 입력하세요"></textarea>
 					</td>		
 				</tr>
 				
 			</table>				
 			
-			
+			<input type="hidden" name="boardcode" value="5"/>
+			<input type="hidden" name="memid" value="${sessionScope['loginid']}"/>
 			<table><tr height="30px"><!-- 높이 조절용 칸 떼우기 --><td></td></tr></table>
 			<button type="submit" class="btn btn-success btn-sm" id="write">　글 작 성　</button>
 			<button type="button" class="btn btn-success btn-sm">　취　　소　</button>

@@ -3,13 +3,9 @@
 <%@page import="vo.VolunteerVO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<%@ include file="top.jsp" %>
 <link rel='stylesheet'
  href='http://fullcalendar.io/js/fullcalendar-2.3.1/lib/cupertino/jquery-ui.min.css' />
 <link
@@ -25,6 +21,8 @@
 <script
  src='http://fullcalendar.io/js/fullcalendar-2.3.1/fullcalendar.min.js'></script>
 <script src='http://fullcalendar.io/js/fullcalendar-2.3.1/lang-all.js'></script>
+
+
 
 <style>
 .fc-event{
@@ -121,7 +119,7 @@ function admin(){
 	 	                        data: { //파라미터로 q
 	 	                        	//나중에 memno sessionscope로 el로 아래서 받아서 같이보내야함
 	 	                        	//memno : $('#volunteer').val(),
-	 	                        	memno : '1',
+	 	                        	memid : log,
 	 	                            volunteerno : calEvent.title.split(".")[0]
 	                    	  
 	                    	  /* volunteertitle : title,
@@ -258,11 +256,12 @@ function admin(){
   
  });
 </script>
-</head>
-<body>
+ 
  <div id='calendar'>
  <input type="hidden" id="volunteer" value="${sessionScope['loginid']}"/> <!-- $sessinscope["inputid"] -->
  <%-- <input type="hidden" name="no" value="${param.no }"> --%>
  </div>
-</body>
-</html>
+ 
+ 
+ <%@ include file="bottom.jsp" %>
+
