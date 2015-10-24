@@ -51,6 +51,14 @@
 		</result>
 	</action>
 
+<action name="comminsertboard" class="action_board.CommentInsertAction">
+	<result type="redirectAction">
+		<param name="actionName">boarddetail</param>
+		<param name="boardno">${boardno}</param>
+	</result>
+</action>
+
+
 	
 </package>
 </struts>

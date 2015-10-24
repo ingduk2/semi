@@ -53,6 +53,53 @@
 				<td colspan="6" class="bgwhite" ><!-- 내용들어갈 곳입니다. -->
 				<s:property value="vo.boardcontent"/></td>						
 			</tr>
+			
+			
+			<!-- 댓글 입력  -->
+			<tr>
+				<th>Comments</th>
+				<td colspan="6">
+				<form method="post" action="comminsertboard">
+			    	<div class="input-group col-xs-12">
+			    		<input type="hidden" name="memid" value="${sessionScope['loginid']}"/>
+			    		<input type="hidden" name="boardno" value="${vo.boardno }"/>
+			        	<input type="text" name="commcontent" class="form-control input-sm " placeholder="Your comments">
+			            	<span class="input-group-btn">
+			                    <span class="btn btn-success btn-sm">&nbsp;
+			                    	<input type="submit" value=""/>
+			                    	<span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Add
+			                    </span>
+			                </span>
+			        </div>		
+			        </form>			
+				</td>
+			</tr>
+			
+			<!--  댓글 출력 -->
+			<tr>
+				<th><span class="glyphicon glyphicon-user"></span></th>
+				<td colspan="6">
+					<table width="100%">
+						<tr> <th style="border-left: 1px solid #f0fff0;">ID</th> <th  class="reply">Comment</th> <th>Date</th> </tr>
+						<!-- 댓글 부분 이곳에서 반복처리하면 됩니다. 시작 -->
+						<s:iterator value="list">
+						<tr> 
+							<td><s:property value="memid"/></td>
+							<td class="reply">
+								<s:property value="commcontent"/>
+								<!-- Comment내용이나오겠지,아마도! -->
+							</td>
+							<td><s:property value="commdate"/></td> 
+						</tr>
+						</s:iterator>
+						<!-- 끝 -->
+					</table>					
+				</td>
+			</tr>
+			
+			
+			
+			
 		</table>							
 		
 		<table><tr height="30px"><!-- 높이 조절용 칸 떼우기 --><td></td></tr></table>
