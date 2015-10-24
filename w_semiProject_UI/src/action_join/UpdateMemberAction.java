@@ -7,37 +7,31 @@ import com.opensymphony.xwork2.Preparable;
 import dao.MemberDao;
 import vo.MemberVO;
 
-public class EmailCheckAction implements Action, Preparable, ModelDriven<MemberVO> {
+public class UpdateMemberAction implements Action, Preparable, ModelDriven<MemberVO> {
 
 	private MemberVO vo;
-	private String result;
-	
+	private String memid;
+
 	@Override
 	public MemberVO getModel() {
 		return vo;
 	}
-	
+
 	@Override
 	public void prepare() throws Exception {
 		vo = new MemberVO();
 	}
-	
+
 	@Override
 	public String execute() throws Exception {
 		
-int emailcheck = MemberDao.getDao().emailCheck(vo);
-		
-		if (emailcheck == 1) {
-			result = "exist";
-		}
-		else {
-			result = "possible";
-		}
+		memid = vo.getMemid();
+		MemberDao.getDao().updateUserInfo(vo);
 		
 		return SUCCESS;
 	}
 
-	public String getResult() {
-		return result;
+	public String getMemid() {
+		return memid;
 	}
 }

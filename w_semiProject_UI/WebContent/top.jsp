@@ -41,7 +41,14 @@
 								    <li><a href="board">커뮤니티</a></li>
 								    <li><a href="">문의사항</a></li>
 								    <li><a href="chart">차트</a><li>
-								    <li><a href="mypage">MyPage</a></li>
+<!-- 								    <li><a href="mypage">MyPage</a></li> -->
+									<!-- session 체크 추가 및 링크 변경 by sky 151024  -->
+									<s:if test="#session.loginid==null">
+								    	<li><a href="login">MyPage</a></li>
+								    </s:if>
+								    <s:else>
+								    	<li><a href="mypage?memid=${sessionScope['loginid']}">MyPage</a></li>
+								    </s:else>
 	  						</ul>
 						</td>  
 					</tr>

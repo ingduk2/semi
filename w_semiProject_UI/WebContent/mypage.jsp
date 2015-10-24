@@ -1,19 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
-
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
 
 <!--  header -->
-<%@ include file="top.jsp"%>
-
+	<%@ include file="top.jsp"%>
 
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	
-	<!-- 생년월일 달력으로 받기 위함 by sky -->
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-	<link rel="stylesheet" href="/resources/demos/style.css">
-	
-
 <style>
 	table th {
 		font-weight: bold;
@@ -104,57 +96,70 @@ function execDaumPostcode() {   //주소 가져오는 api
 				}
 			}).open();
 } // 다음에서의 라이브러리를 가져오기 위함.
-
-
-
-//생년월일 달력으로 받기 위함 by sky
+	
+	// 비밀번호 똑같이 입력했는지 확인해서 뿌려줌
 	$(function() {
-		$( "#datepicker" ).datepicker({
-			changeMonth: true,
-			changeYear: true
+		$('#pwdchk').keyup(function() {		
+			$val_pwdchk = $(this).val();
+			$val_pwd = $('#pwd').val();
+			
+			if ($val_pwdchk.length > 0) {
+				$('#chkres').load('joinpwdchk?mempwd='+$val_pwd+'&pwdchk='+$val_pwdchk);
+			}
 		});
-		// 날짜 형식 yyyy-mm-dd로 변경
-		$( "#datepicker" ).datepicker({
-			dateFormat: "yy-mm-dd"
+	});
+	
+	// 이메일 주소 중복 체크
+	$(function() {
+		$('#emailchk').click(function() {
+			$.ajax({
+				url: "emailchk",
+				type: "GET",
+				data: {
+					mememail: $('#mememail').val()
+				},
+				dataType: "html",
+				
+				success: function(res) {
+					if (res == "이미 존재하는 메일 주소 입니다.") {
+						$('#emailchkres').html(res).css('color', 'red');
+					}
+					else {
+						$('#emailchkres').html(res).css('color', 'blue');
+					}
+				},
+				error: function(a, b) {
+					alert("Request: " + JSON.stringify(a));
+				}
+			});
 		});
-		// 날짜 형식 getter
-		var dateFormat = $( "#datepicker" ).datepicker( "option", "dateFormat" );
-		// 날짜 형식 setter
-		$( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
-		
-		// 년도 기간 변경
-		$( "#datepicker" ).datepicker({
-			yearRange: "1915:2015"
-		});
-		// 년도 기간 getter
-		var yearRange = $( "#datepicker" ).datepicker( "option", "yearRange" );
-		// 년도 기간 setter
-		$( "#datepicker" ).datepicker( "option", "yearRange", "1915:2015" );
-	});   //생년월일 가져오는 function
-
+	});
+	
 </script>
 
 
 
+<!-- form 추가 by sky 1022 -->
 <div>
+<form method="post" action="updateMember">
+
 		<img src="img/mypagetitle.png" width="240px">
 		<table><tr height="30px"><!-- 높이 조절용 칸 떼우기 --><td></td></tr></table>
-		
 		
 		<table id="formtable">
 		<!-- <tr> <th></th> <td></td> </tr> -->
 			<tr>
-				<th>아이디(ID)</th>
-				<td>
-					<input type="text" class="form-control input-sm" placeholder="ID" name="memid" readonly="readonly"/>
-				</td> 
+				<th>아이디</th>
+				<td width="300px">
+					<input type="text" class="form-control input-sm" value="${result.memid}" name="memid" readonly="readonly"/>
+				</td>
 				<td></td> 
 			</tr>
 			
 			<tr>
 				<th>비밀번호</th>   
 				<td> 
-					<input type="password" class="form-control input-sm" placeholder="비밀번호(8자리 이상)" name="mempwd" minlength="8" maxlength=20">
+					<input type="password" class="form-control input-sm" placeholder="비밀번호(8자리 이상)" value="${result.mempwd}" id="pwd" name="mempwd" minlength="8" maxlength=20">
 				</td> 
 				<td></td> 
 			</tr>
@@ -162,15 +167,17 @@ function execDaumPostcode() {   //주소 가져오는 api
 			<tr> 
 				<th>비밀번호 재확인</th>  
 				<td>
-					<input type="password" class="form-control input-sm" placeholder="비밀재확인">
+					<input type="password" class="form-control input-sm" placeholder="비밀번호 재확인" id="pwdchk" name="pwdchk" />
 				</td> 
-				<td>KeeyUp</td> 
+				<!-- id 값 추가 by sky 1022 -->
+				<td id="chkres"></td> 
 			</tr>
 			
 			<tr> 
 				<th>이름</th>
 				<td>
-					<input class="form-control input-sm" placeholder="이름" name="memname">
+					<!-- readonly 옵션 추가 by sky 1022 -->
+					<input class="form-control input-sm" value="${result.memname}" name="memname" readonly="readonly">
 				</td> 
 				<td></td> 
 			</tr>
@@ -178,38 +185,30 @@ function execDaumPostcode() {   //주소 가져오는 api
 			<tr> 
 				<th>생년월일</th>   
 				<td>
-					<input class="form-control input-sm" type="text" placeholder="생년월일 (클릭)" id="datepicker" name="membirth" readonly="readonly"  />
+					<input class="form-control input-sm" type="text" value="${result.membirth}" name="membirth" readonly="readonly" />
 				</td> 
 				<td></td> 
 			</tr>
 			
+			<!-- 이메일 받는 부분 추가 by sky 1022 -->
 			<tr> 
-				<th>닉네임</th>   
+				<th>이메일</th>
 				<td>
-					<input type="text" class="form-control input-sm" placeholder="닉네임 (영어 20자, 한글 10자 까지)" name="memnick" minlength="1" maxlength="20" />
+					<input type="email" class="form-control input-sm" value="${result.mememail}" placeholder="이메일 주소 (abc@abc.com)"
+					name="mememail" id="mememail" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" />
+					<!-- 중복 체크 결과용 div 추가 by sky 1021 -->
+					<div id="emailchkres"></div>
 				</td> 
 				<td>
-					<button type="button" class="btn btn-default btn-sm"> 중복체크	</button>
+					<button type="button" class="btn btn-default btn-sm" id="emailchk"> 중복체크 </button>
 				</td> 
 			</tr>
 			
 			<tr> 
 				<th>전화번호</th>   
 				<td>
-					<div class="col-sm-3">
-						<select class="form-control input-sm" id="sel1">
-							<option>010</option>
-							<option>011</option>
-							<option>016</option>
-							<option>017</option>
-							<option>018</option>
-							<option>019</option>
-						</select>
-					</div>
-					<div class="col-sm-7">
-						<input class="form-control input-sm">
-						<font size="1">-없이 작성해주세요</font>
-					</div>
+					<input type="text" class="form-control input-sm" name="memtel" value="${result.memtel}" 
+					 pattern="^0[0-9]{2}-[0-9]{3,4}-[0-9]{4}$" placeholder="전화번호 (###-####-####)" />
 				</td> 
 				<td>
 				<!-- 요기요기 -->
@@ -218,7 +217,7 @@ function execDaumPostcode() {   //주소 가져오는 api
 			<tr> 
 				<th>주소</th>   
 				<td>
-					<input id="post" name="post" class="form-control input-sm" type="text" placeholder="우편번호(검색)" readonly="readonly"/>
+					<input id="post" name="mempost" class="form-control input-sm" type="text" value="${result.mempost}" readonly="readonly"/>
 				</td> 
 				<td>
 					<button type="button" class="btn btn-default btn-sm" onclick="execDaumPostcode()">우편번호</button>
@@ -227,28 +226,31 @@ function execDaumPostcode() {   //주소 가져오는 api
 			<tr> 
 				<th></th> 
 				<td>
-					<input class="form-control input-sm" type="text" id="roadAddress" name="roadAddress" placeholder="도로명" readonly="readonly"/>
+					<input class="form-control input-sm" type="text" id="roadAddress" name="memdoroaddr" value="${result.memdoroaddr}" readonly="readonly"/>
 				</td> 
 			</tr>
 			<tr> 
 				<th></th> 
 				<td>
-					<input class="form-control input-sm" type="text" id="jibunAddress" name="jibunAddress" placeholder="지번" readonly="readonly"/>
+					<input class="form-control input-sm" type="text" id="jibunAddress" name="memjibunaddr" value="${result.memjibunaddr}" readonly="readonly"/>
 					<span id="guide" style="color:#999"></span>
 				</td> 
 			</tr>
 		</table> 
 
 		<table><tr height="30px"><td></td></tr></table>
-		<button type="button" class="btn btn-success btn-sm">　수　　정　</button>
-		<button type="button" class="btn btn-success btn-sm">　취　　소　</button>
-		<button type="button" class="btn btn-success btn-sm">　탈　　퇴　</button>
-<!-- 		<button type="submit" class="btn btn-success btn-sm">　가　　입　</button> -->
+		<button type="submit" class="btn btn-success btn-sm">　수　　정　</button>
+		
+		</form>
+		
+		<form action="withdraw">
+<!-- 		<button type="button" class="btn btn-success btn-sm">　취　　소　</button> -->
+<!-- 		<button type="button" class="btn btn-success btn-sm">　탈　　퇴　</button> -->
+		<button type="submit" class="btn btn-success btn-sm">　탈　　퇴　</button>
+		<input type="hidden" name="memid" value="${sessionScope['loginid']}">
 	
-	</div>
-
-
-
-
+	
+	</form>
+</div>
 	<!--  bottom -->
 <%@ include file="bottom.jsp"%>

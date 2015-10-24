@@ -34,7 +34,11 @@
 		</action>
 		<!-- 로그인 -->
 		<action name="loginchk" class="action_join.LoginAction">
-			<result name="INPUT">/loginErr.jsp</result>
+<!-- 			<result name="INPUT">/loginErr.jsp</result> -->
+			<!-- login 실패 시 오류 메세지라도 띄워줘야 하나? -->
+			<result name="INPUT" type="redirectAction">
+				<param name="actionName">login</param>
+			</result>
 			<result type="redirectAction">
 					<param name="actionName">${url}</param>
 			</result>
@@ -51,10 +55,20 @@
 			<result>/mypage.jsp</result>
 		</action>
 		
+		<!-- 회원 정보 수정 --> 
+		<action name="updateMember" class="action_join.UpdateMemberAction">
+			<result type="redirectAction">
+				<param name="actionName">mypage</param>
+				<param name="memid">${memid}</param>
+			</result>
+		</action>
 		
-		
-
-		
+		<!-- 회원 탈퇴 연결 -->
+		<action name="withdraw" class="action_join.WithdrawAction">
+			<result type="redirectAction">
+				<param name="actionName">index</param>
+			</result>
+		</action>
 		
 </package>
 </struts>
