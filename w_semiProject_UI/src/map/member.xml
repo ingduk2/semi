@@ -35,5 +35,15 @@
 		select * from member where memid=#{memid}
 	</select>
 	
+	<!-- 유저 정보 수정 -->
+	<update id="updateuserinfo" parameterType="mvo">
+		update member set mempwd=#{mempwd}, mememail=#{mememail}, memtel=#{memtel}, mempost=#{mempost},
+		memjibunaddr=#{memjibunaddr}, memdoroaddr=#{memdoroaddr} where memid=#{memid}
+	</update>
+	
+	<!-- 회원 탈퇴 -->
+	<delete id="withdrawuser" parameterType="String">
+		delete from member where memid=#{memid}
+	</delete>
 
 </mapper>
