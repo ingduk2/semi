@@ -43,5 +43,5 @@
 	}
 	a:focus, a:hover{
 		color: #90ee90;
-		text-decoration: underline;
+		text-decoration: none;
 	}
