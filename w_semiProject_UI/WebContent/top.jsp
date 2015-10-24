@@ -22,6 +22,15 @@
 <body>
 		<div id="bg">
 			<div id="header">
+			
+			<s:if test="#session.loginid==null">
+				<li><a href="login">로그인</a></li>
+			</s:if>
+			<s:else>
+				<li><a href="mypage?memid=${sessionScope['loginid']}">${sessionScope["loginid"]}님</a></li>
+				<li><a href="logout">로그아웃</a></li>
+			</s:else>	
+			<li><a href="join">회원가입</a></li>
 				<table height="230px">
 					<tr> 
 						<td align="left"><img src="img/logo.png"></td>
@@ -38,7 +47,7 @@
 								    <li><a href="">보호동물</a></li>
 								    <li><a href="">분양대기</a></li>
 								    <li><a href="cal">봉사활동</a></li>
-								    <li><a href="board">커뮤니티</a></li>
+								    <li><a href="board?boardcode=1">커뮤니티</a></li>
 								    <li><a href="">문의사항</a></li>
 								    <li><a href="chart">차트</a><li>
 <!-- 								    <li><a href="mypage">MyPage</a></li> -->
