@@ -17,6 +17,7 @@ public class CommentInsertAction implements Action, Preparable, ModelDriven<Comm
 	private CommBoardVO cbvo;
 	private HttpServletRequest commip;
 	private int animalno;
+	
 	//content
 	//memid
 	@Override

@@ -6,30 +6,16 @@
 <%@ include file="top.jsp"%>
 
 <style>
-/* .container1{ */
-/* 	text-align: center;	 */
-/* } */
-/* #container1{ */
-/* 	text-align: center;	 */
-/* } */
-/* div{ */
-/* 	border: 1px solid;	 */
-/* 	align: center; */
-/* 	text-align: center;	 */
-/* } */
-div{
-	border: 1px solid red;
-}
+ 	.numbering{
+ 		clear: both;
+ 	} 
 </style>
 
 <h2>
 	<img src="img/imgboardtitle.png" width="300px">
 </h2>
-
 	
-<!-- <div id="container1" style="background-color: blue; border:1px solid red"> -->
-	<div class="col-md-offset-2 col-md-8 center">
-			
+	<div class="col-md-offset-2 col-md-8 center"> 
 			 <c:if test="${size!=0}">
 			 <c:set var="doneLoop" value="false"/>
 		 	<c:forEach var="i" begin="0" end="11" step="4"> 
@@ -81,34 +67,35 @@ div{
 			</c:if>
 			
 			<c:if test="${not doneLoop }">
-			<div class="col-md-3">
-				<a href="imgdetail?animalno=${list[i+3].animalno}" class="thumbnail">
-					<img src="upload/${list[i+3].animalimg}"  style="width: 150px; height: 150px">
-					<p>${list[i+3].animalno}<br>${list[i+3].animalspecies}<br>${list[i+3].animalbreed}<br>
-						${list[i+3].animalname}<br>${list[i+3].animalage}<br>${list[i+3].animalsex}<br>
-						${list[i+3].animalregion}<br>${list[i+3].animaldate}<br>
-					</p> 
-				</a>
-			</div>
-			<c:if test="${i+3==(size-1) }">
-					<c:set var="doneLoop" value="true"/>
+				<div class="col-md-3">
+					<a href="imgdetail?animalno=${list[i+3].animalno}" class="thumbnail">
+						<img src="upload/${list[i+3].animalimg}"  style="width: 150px; height: 150px">
+						<p>${list[i+3].animalno}<br>${list[i+3].animalspecies}<br>${list[i+3].animalbreed}<br>
+							${list[i+3].animalname}<br>${list[i+3].animalage}<br>${list[i+3].animalsex}<br>
+							${list[i+3].animalregion}<br>${list[i+3].animaldate}<br>
+						</p> 
+					</a>
+				</div>
+				<c:if test="${i+3==(size-1) }">
+						<c:set var="doneLoop" value="true"/>
 				</c:if>
 			</c:if>
 			</div>
-			
-			
-			
 			</c:forEach>
-			
-			
 			</c:if>
-	</div><p>
-	<div>
-	<input type="button" value="click" onclick="goUrl('animalboardwrite')"/><p>
-	<s:property value="pagingCode" escape="false"/>
+			
+		<div class="numbering">
+			<br><button type="button" class="btn btn-success btn-sm" onclick="goUrl('animalboardwrite')">¡¡±Û ¾² ±â¡¡</button><br><br>
+<!-- 			<input type="button" value="click" onclick="goUrl('animalboardwrite')"/><br> -->
+			<span class="glyphicon glyphicon-circle-arrow-left"></span>
+				<s:property value="pagingCode" escape="false"/>
+			<span class="glyphicon glyphicon-circle-arrow-right"></span>
+			
+		</div>
+		
 	</div>
-	
-<!-- </div> -->
+
+
  
 
 <!--  bottom -->

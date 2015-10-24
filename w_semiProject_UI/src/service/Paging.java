@@ -1,7 +1,7 @@
 package service;
-//현업에서도 페이징 할 때 계속 사용 할 코드이다.  
+//�쁽�뾽�뿉�꽌�룄 �럹�씠吏� �븷 �븣 怨꾩냽 �궗�슜 �븷 肄붾뱶�씠�떎.  
 public class Paging {
-	//View 로 돌려줄 페이징 값
+	//View 濡� �룎�젮以� �럹�씠吏� 媛�
 	private String pagingCode;
 
 	public String getPagingCode() {
@@ -13,82 +13,84 @@ public class Paging {
 	}
 	
 	public Paging(int totalRecord, int nowPage, int numPerPage,
-			int numPerBlock, String url){
-		//TotalRecord : 총 데이터 수를 저장
-		//nowPage: 현재 페이지
-		//numperPage: 페이지당 몇 줄 씩 보여 줄 것인지.... --한페이지당 보여줄 줄 (게시글 수)
-		//numPerBlock: 페이지 [1][2]... 블록을 몇개로 제한할 값 -- 아래의 페이지 1.2.3.4.5 6 7 8 9 10 -1블록
-																	//  1. 2. 3. 4. 5. --10 - 2블
-		//url: 페이지 이동경로를 저장
-		//전체 페이지 값 및 전체 블록 값 구하기.
+			int numPerBlock, String url, String params){
+		//TotalRecord : 珥� �뜲�씠�꽣 �닔瑜� ���옣
+		//nowPage: �쁽�옱 �럹�씠吏�
+		//numperPage: �럹�씠吏��떦 紐� 以� �뵫 蹂댁뿬 以� 寃껋씤吏�.... --�븳�럹�씠吏��떦 蹂댁뿬以� 以� (寃뚯떆湲� �닔)
+		//numPerBlock: �럹�씠吏� [1][2]... 釉붾줉�쓣 紐뉕컻濡� �젣�븳�븷 媛� -- �븘�옒�쓽 �럹�씠吏� 1.2.3.4.5 6 7 8 9 10 -1釉붾줉
+																	//  1. 2. 3. 4. 5. --10 - 2釉�
+		//url: �럹�씠吏� �씠�룞寃쎈줈瑜� ���옣
+		//�쟾泥� �럹�씠吏� 媛� 諛� �쟾泥� 釉붾줉 媛� 援ы븯湲�.
 		
-		//전체 페이지가 2페이지가 있으면
-		//1.1->2페이지 10/6=1.111 ->2 페이지 가 되기 위해서는
-		//Math.ceil()를 사용하면 된다.
-		int totalPage=(int) Math.ceil((double)totalRecord / numPerPage); // 전체 / 페이지당 수 30/15=2페이지
-			//전체 블록값을 구한 값
-			//연산결과 : 1페이지부터 1 1 1 1 1->6페이지 1.1 1.2 1.3
-		int totalBlock = (int) Math.ceil((double)totalPage/numPerBlock); // 전체 / 블록 수 
-			//현재 페이지 값에서 페이지 제한수를 나누어서 현재 블록의 값을 구해야 한다.
-		int nowBlock=(int) Math.ceil((double)nowPage/numPerBlock); // 지금페이지/ 블록 수 현재블록의 값.
+		//�쟾泥� �럹�씠吏�媛� 2�럹�씠吏�媛� �엳�쑝硫�
+		//1.1->2�럹�씠吏� 10/6=1.111 ->2 �럹�씠吏� 媛� �릺湲� �쐞�빐�꽌�뒗
+		//Math.ceil()瑜� �궗�슜�븯硫� �맂�떎.
+		int totalPage=(int) Math.ceil((double)totalRecord / numPerPage); // �쟾泥� / �럹�씠吏��떦 �닔 30/15=2�럹�씠吏�
+			//�쟾泥� 釉붾줉媛믪쓣 援ы븳 媛�
+			//�뿰�궛寃곌낵 : 1�럹�씠吏�遺��꽣 1 1 1 1 1->6�럹�씠吏� 1.1 1.2 1.3
+		int totalBlock = (int) Math.ceil((double)totalPage/numPerBlock); // �쟾泥� / 釉붾줉 �닔 
+			//�쁽�옱 �럹�씠吏� 媛믪뿉�꽌 �럹�씠吏� �젣�븳�닔瑜� �굹�늻�뼱�꽌 �쁽�옱 釉붾줉�쓽 媛믪쓣 援ы빐�빞 �븳�떎.
+		int nowBlock=(int) Math.ceil((double)nowPage/numPerBlock); // 吏�湲덊럹�씠吏�/ 釉붾줉 �닔 �쁽�옱釉붾줉�쓽 媛�.
 		
-		//페이징을 구하기 위한 태그공식을 저장하기 위한 자료
-			//이전 페이지를 구현
+		//�럹�씠吏뺤쓣 援ы븯湲� �쐞�븳 �깭洹멸났�떇�쓣 ���옣�븯湲� �쐞�븳 �옄猷�
+			//�씠�쟾 �럹�씠吏�瑜� 援ы쁽
 		StringBuffer prev= new StringBuffer();
-			//다음 페이지를 구현
+			//�떎�쓬 �럹�씠吏�瑜� 援ы쁽
 		StringBuffer next= new StringBuffer();
-			//페이지 값 구현
+			//�럹�씠吏� 媛� 援ы쁽
 		StringBuffer paging= new StringBuffer();
 			
 		
-		//▶ 
-		//◀ 
-		//이전 페이지 구하는 공식
-		//nowBlock>1 이면 이전 페이지의 링크를 구현. 인데 <a href='url?nowPage=(nowBlock -2)*numPerBlock +1'>◀</a>&nbsp;&nbsp;
-		//										  ◀&nbsp;&nbsp;
-		if(nowBlock > 1){ //nowBlock 이 1보다 크다면 이전페이지의 링크를 구현
+		//�뼳 
+		//�� 
+		//�씠�쟾 �럹�씠吏� 援ы븯�뒗 怨듭떇
+		//nowBlock>1 �씠硫� �씠�쟾 �럹�씠吏��쓽 留곹겕瑜� 援ы쁽. �씤�뜲 <a href='url?nowPage=(nowBlock -2)*numPerBlock +1'>��</a>&nbsp;&nbsp;
+		//										  ��&nbsp;&nbsp;
+		if(nowBlock > 1){ //nowBlock �씠 1蹂대떎 �겕�떎硫� �씠�쟾�럹�씠吏��쓽 留곹겕瑜� 援ы쁽
 			prev.append("<a href='").append(url);
 			prev.append("?nowPage=");
 			prev.append((nowBlock - 2) * numPerBlock +1);
-			prev.append("'>◀</a>&nbsp;&nbsp;");
+			prev.append(params);
+			prev.append("'></a>&nbsp;&nbsp;");
 		}else{
-			prev.append("◀&nbsp;&nbsp;");
+			prev.append("&nbsp;&nbsp;");
 		}
 		
-		//페이지 출력
+		//�럹�씠吏� 異쒕젰
 		for(int i=0; i<numPerBlock; i++){
-			//출력되는 페이지 값
-			int printPage=((nowBlock-1)* numPerBlock)+i+1; //현재 페이지 값-처음에는 0인데 1페이지를 출력하기 위해 +1
+			//異쒕젰�릺�뒗 �럹�씠吏� 媛�
+			int printPage=((nowBlock-1)* numPerBlock)+i+1; //�쁽�옱 �럹�씠吏� 媛�-泥섏쓬�뿉�뒗 0�씤�뜲 1�럹�씠吏�瑜� 異쒕젰�븯湲� �쐞�빐 +1
 			
-			if(printPage==nowPage){// 현재 페이지일 경우 (링크를 걸면 안됨.
+			if(printPage==nowPage){// �쁽�옱 �럹�씠吏��씪 寃쎌슦 (留곹겕瑜� 嫄몃㈃ �븞�맖.
 				paging.append("<font color='olive'>");
 				paging.append(printPage).append("</font>");
 				
 			}else{
-				//현재 페이지가 아닐 경우에는 페이지의차이를 두면 된다.
+				//�쁽�옱 �럹�씠吏�媛� �븘�땺 寃쎌슦�뿉�뒗 �럹�씠吏��쓽李⑥씠瑜� �몢硫� �맂�떎.
 				paging.append("<a href='").append(url);
 				paging.append("?nowPage=");
-				paging.append(printPage).append("'>");
+				paging.append(printPage).append(params).append("'>");
 				paging.append(printPage).append("</a>&nbsp;&nbsp;");
 			}
 			
-			//전체 페이지와 같다면, 페이지 출력문을 빠져 나와야 한다.
+			//�쟾泥� �럹�씠吏��� 媛숇떎硫�, �럹�씠吏� 異쒕젰臾몄쓣 鍮좎졇 �굹���빞 �븳�떎.
 			
 			if(printPage==totalPage){
 				break;
 			}
-		}//for문 종료
+		}//for臾� 醫낅즺
 		
-		//다음 페이지를 구현: totalBlock 이 nowBlock보다 클경우 (블록보다 많아지면 넘어가게 링크.)
-		//페이지를 하나 더 만들어야 하므로 <a href='url?nowPage=nowBlock*numPerBlock+1'>▶</a>
+		//�떎�쓬 �럹�씠吏�瑜� 援ы쁽: totalBlock �씠 nowBlock蹂대떎 �겢寃쎌슦 (釉붾줉蹂대떎 留롮븘吏�硫� �꽆�뼱媛�寃� 留곹겕.)
+		//�럹�씠吏�瑜� �븯�굹 �뜑 留뚮뱾�뼱�빞 �븯誘�濡� <a href='url?nowPage=nowBlock*numPerBlock+1'>�뼳</a>
 		if(totalBlock > nowBlock){
 			next.append("<a href='").append(url);
 			next.append("?nowPage=").append(nowBlock * numPerBlock +1);
-			next.append("'>▶").append("</a>");
+			prev.append(params);
+			next.append("'>").append("</a>");
 		}else{
-			next.append("&nbsp;&nbsp;▶"); //이거 없애버리면 숨겨지게된다. 링크
+			next.append("&nbsp;&nbsp;"); //�씠嫄� �뾾�븷踰꾨━硫� �닲寃⑥�寃뚮맂�떎. 留곹겕
 		}
-		//페이지가 완성 되었으면 조합된 페이지 코드에 저장
+		//�럹�씠吏�媛� �셿�꽦 �릺�뿀�쑝硫� 議고빀�맂 �럹�씠吏� 肄붾뱶�뿉 ���옣
 		pagingCode=prev.toString() + paging.toString()
 				+next.toString();
 		

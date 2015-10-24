@@ -47,7 +47,7 @@ ModelDriven<BoardVO>, ServletRequestAware {
 		System.out.println(vo.getMemid());
 		vo.setBoardip(boardip.getRemoteAddr());
 		
-		//vo.setAnimalno(100);
+		vo.setAnimalno(0);
 		//vo.setMemid();
 		vo.setBoardnopwd("1");
 //		vo.setBoardcontent("ads");
