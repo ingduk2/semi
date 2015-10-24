@@ -1,33 +1,25 @@
 package action_join;
 
 import com.opensymphony.xwork2.Action;
-import com.opensymphony.xwork2.ModelDriven;
-import com.opensymphony.xwork2.Preparable;
 
 import dao.MemberDao;
 import vo.MemberVO;
 
-public class SelectUserInfoAction implements Action, Preparable, ModelDriven<MemberVO>{
+public class SelectUserInfoAction implements Action {
 
-	private MemberVO vo;
+	private String memid;
 	private MemberVO result;
-
-	@Override
-	public MemberVO getModel() {
-		return vo;
-	}
-
-	@Override
-	public void prepare() throws Exception {
-		vo = new MemberVO();
-	}
-
+		
 	@Override
 	public String execute() throws Exception {
 		
-		result = MemberDao.getDao().selectUserInfo(vo.getMemid());
+		result = MemberDao.getDao().selectUserInfo(memid);
 		
 		return SUCCESS;
+	}
+	
+	public void setMemid(String memid) {
+		this.memid = memid;
 	}
 
 	public MemberVO getResult() {

@@ -180,8 +180,16 @@ function execDaumPostcode() {   //주소 가져오는 api
 				},
 				dataType: "html",
 				
+// 				success: function(res) {
+// 					if (res == "이미 존재하는 메일 주소 입니다.") {
+// 						$('#emailchkres').html(res).css('color', 'red');
+// 					}
+// 					else {
+// 						$('#emailchkres').html(res).css('color', 'blue');
+// 					}
+// 				},
 				success: function(res) {
-					if (res == "이미 존재하는 메일 주소 입니다.") {
+					if (res == "exist") {
 						$('#emailchkres').html(res).css('color', 'red');
 					}
 					else {
