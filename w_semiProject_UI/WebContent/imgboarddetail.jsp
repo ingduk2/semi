@@ -136,20 +136,19 @@
 			
 				<th>Comments</th>
 				<td colspan="6">
-				<form method="post" action="comminsertimg">
-			    	<div class="input-group col-xs-12">
-			    		<input type="hidden" name="memid" value="${sessionScope['loginid']}"/>
-			    		<input type="hidden" name="boardno" value="${bvo.boardno}"/>
-			    		<input type="hidden" name="animalno" value="${avo.animalno}"/>
-			        	<input type="text" name="commcontent" class="form-control input-sm " placeholder="Your comments">
-			            	<span class="input-group-btn">
-			                    <span class="btn btn-success btn-sm">&nbsp;
-			                    	<input type="submit" value="ADD"/>
-			                    	<span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Add
-			                    </span>
-			                </span>
-			        </div>		
-			    </form>			
+					<form method="post" action="comminsertimg">
+				    	<div class="input-group col-xs-12">
+				    		<input type="hidden" name="memid" value="${sessionScope['loginid']}"/>
+				    		<input type="hidden" name="boardno" value="${bvo.boardno}"/>
+				    		<input type="hidden" name="animalno" value="${avo.animalno}"/>
+				        	<input type="text" name="commcontent" class="form-control input-sm " placeholder="Your comments">
+				            	<span class="input-group-btn">
+				                    <button type="submit" value="ADD" class="btn btn-success btn-sm">&nbsp;
+				                    	<span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Add
+				                    </button>
+				                </span>
+				        </div>		
+				    </form>			
 				</td>
 				
 			</tr>
