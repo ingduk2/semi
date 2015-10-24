@@ -16,5 +16,8 @@
 <include file="z_img/struts-img.xml"/>
 <include file="z_join/struts-join.xml"/>
 <include file="z_board/struts-board.xml"/>
+<include file="x_adopt/struts_adopt.xml"/>
+<!-- 봉사활동 -->
+
 </struts>
 
