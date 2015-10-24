@@ -13,7 +13,7 @@ public class Paging {
 	}
 	
 	public Paging(int totalRecord, int nowPage, int numPerPage,
-			int numPerBlock, String url){
+			int numPerBlock, String url, String params){
 		//TotalRecord : 珥� �뜲�씠�꽣 �닔瑜� ���옣
 		//nowPage: �쁽�옱 �럹�씠吏�
 		//numperPage: �럹�씠吏��떦 紐� 以� �뵫 蹂댁뿬 以� 寃껋씤吏�.... --�븳�럹�씠吏��떦 蹂댁뿬以� 以� (寃뚯떆湲� �닔)
@@ -50,6 +50,7 @@ public class Paging {
 			prev.append("<a href='").append(url);
 			prev.append("?nowPage=");
 			prev.append((nowBlock - 2) * numPerBlock +1);
+			prev.append(params);
 			prev.append("'></a>&nbsp;&nbsp;");
 		}else{
 			prev.append("&nbsp;&nbsp;");
