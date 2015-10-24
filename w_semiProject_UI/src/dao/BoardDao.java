@@ -103,4 +103,11 @@ public class BoardDao {
  		ss.close();
  		return list;
  	}
+ 	
+ 	public int getSearchCount(BoardVO bvo){
+ 		SqlSession ss=FactoryService.getFactory().openSession();
+ 		int scnt=ss.selectOne("board.getsearchcnt",bvo);
+ 		ss.close();
+ 		return scnt;
+ 	}
 }

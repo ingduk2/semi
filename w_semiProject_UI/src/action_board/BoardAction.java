@@ -38,12 +38,27 @@ public class BoardAction implements Action, Preparable, ModelDriven<BoardVO>{
 
 	@Override
 	public String execute() throws Exception {
+		
+		System.out.println("-choose--"+vo.getChooseType());
+		System.out.println();
+		
+		int total=0;
+		String url=null;
+		String params=null;
+		if(vo.getChooseType()!=null){//yes search - exist choose type
+			total=BoardDao.getDao().getSearchCount(vo);
+			url="board";
+			params="&chooseType="+vo.getChooseType()+"&inputVal="+vo.getInputVal();
+		}else{// no search
+			total= BoardDao.getDao().getTotalCount();
+			url="board";
+		}
 		int numPerPage = 10;
 		int numPerBlock= 5;
-		int total= BoardDao.getDao().getTotalCount();
+		//int total= BoardDao.getDao().getTotalCount();
 		System.out.println("Total : "+total);
-		String url="board";
-		Paging page= new Paging(total, nowPage, numPerPage, numPerBlock, url);
+		
+		Paging page= new Paging(total, nowPage, numPerPage, numPerBlock, url, params);
 		
 		//페이징을 할 때 마다 start와 end값을 넘겨야 한다.
 		pagingCode=page.getPagingCode();
@@ -72,4 +87,5 @@ public class BoardAction implements Action, Preparable, ModelDriven<BoardVO>{
 		return pagingCode;
 	}
 
+	
 }

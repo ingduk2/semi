@@ -39,11 +39,11 @@
 	}
 	#page_footer {
 		height: 60px;
-		background: #f5f5f5;
+/* 		background: #f5f5f5; */
 	}
 	.footer_text {
 		margin: 20px 0;
-		color: #777;
+/* 		color: #777; */
 	}
 </style>
 

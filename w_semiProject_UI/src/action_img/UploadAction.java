@@ -19,10 +19,10 @@ import vo.BoardVO;
 import vo.MemberVO;
 
 
-//Action을 정의하는 3번째 방법
-//1. 우리가 만듬
-//2. 제공하는 action
-//3. 외부 프로퍼티 actionsupport
+//Action�쓣 �젙�쓽�븯�뒗 3踰덉㎏ 諛⑸쾿
+//1. �슦由ш� 留뚮벉
+//2. �젣怨듯븯�뒗 action
+//3. �쇅遺� �봽濡쒗띁�떚 actionsupport
 
 public class UploadAction extends ActionSupport implements Preparable, ModelDriven<AnimalVO>
 ,ServletRequestAware{
@@ -33,10 +33,10 @@ public class UploadAction extends ActionSupport implements Preparable, ModelDriv
 	private String boardtitle;
 	private String boardcontent;
 	private int boardcode; //5
-	//파일 업로드 관련멤버를 추가
+	//�뙆�씪 �뾽濡쒕뱶 愿��젴硫ㅻ쾭瑜� 異붽�
 	private File upload;
-	//이 2개는 form에 없지만 같이 넘어오게 된다.!!
-	//spring은 한줄이지만 실제로는 apache fileupload를 통해서 file 말고 다른 2가지 것이 같이 넘어오게 된다.
+	//�씠 2媛쒕뒗 form�뿉 �뾾吏�留� 媛숈씠 �꽆�뼱�삤寃� �맂�떎.!!
+	//spring�� �븳以꾩씠吏�留� �떎�젣濡쒕뒗 apache fileupload瑜� �넻�빐�꽌 file 留먭퀬 �떎瑜� 2媛�吏� 寃껋씠 媛숈씠 �꽆�뼱�삤寃� �맂�떎.
 	private String uploadFileName,uploadContentType;
 	
 	
@@ -49,10 +49,10 @@ public class UploadAction extends ActionSupport implements Preparable, ModelDriv
 	@Override
 	public String execute() throws Exception {
 		
-//		HttpServletRequest req=
-//				ServletActionContext.getRequest();
-//		System.out.println(req.getContextPath());
-//		System.out.println(req.getRealPath("/upload"));
+		HttpServletRequest req=
+				ServletActionContext.getRequest();
+		System.out.println(req.getContextPath());
+		System.out.println(req.getRealPath("/upload"));
 		
 		System.out.println("-----------------");
 		System.out.println(avo.getAnimalname());
@@ -61,12 +61,12 @@ public class UploadAction extends ActionSupport implements Preparable, ModelDriv
 		System.out.println("uploadFileName :"+uploadFileName);
 		System.out.println("uploadContentType :"+uploadContentType);
 		
-		//원래 프로퍼티즈는 생성하고 다 해줘야한다. load하고
-		//그런데 ActionSupport의 gettext를 하면 알아서 찾아줌
-		//getText()로 properties파일의 키를 불러낸다.
-		//extends ActionSupport를 상속 받은 이유 중에 하나.
-		//파일명이 같으면 그냥 키값을 넣어주면 자동으로 properties의 value값을 가져오게 된다.
-		//그리고 경로를 window는 \ 1개가 붙게되는데 이것을 2개로 바꾸어 주던가, 아니면 /로 바꾸어주면 제대로 찾아 올 수 있게 된다. 
+		//�썝�옒 �봽濡쒗띁�떚利덈뒗 �깮�꽦�븯怨� �떎 �빐以섏빞�븳�떎. load�븯怨�
+		//洹몃윴�뜲 ActionSupport�쓽 gettext瑜� �븯硫� �븣�븘�꽌 李얠븘以�
+		//getText()濡� properties�뙆�씪�쓽 �궎瑜� 遺덈윭�궦�떎.
+		//extends ActionSupport瑜� �긽�냽 諛쏆� �씠�쑀 以묒뿉 �븯�굹.
+		//�뙆�씪紐낆씠 媛숈쑝硫� 洹몃깷 �궎媛믪쓣 �꽔�뼱二쇰㈃ �옄�룞�쑝濡� properties�쓽 value媛믪쓣 媛��졇�삤寃� �맂�떎.
+		//洹몃━怨� 寃쎈줈瑜� window�뒗 \ 1媛쒓� 遺숆쾶�릺�뒗�뜲 �씠寃껋쓣 2媛쒕줈 諛붽씀�뼱 二쇰뜕媛�, �븘�땲硫� /濡� 諛붽씀�뼱二쇰㈃ �젣��濡� 李얠븘 �삱 �닔 �엳寃� �맂�떎. 
 		//file.path=/Users/ingduk2/kosta108/html5/spring/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/1007_struts2/upload
 		
 		//String basePath=getText("file.path","action.UploadAction.properties");
@@ -74,7 +74,7 @@ public class UploadAction extends ActionSupport implements Preparable, ModelDriv
 		System.out.println("------: " +basePath);
 		
 		
-		//파일을 복사하는 작업이 필요하다.
+		//�뙆�씪�쓣 蹂듭궗�븯�뒗 �옉�뾽�씠 �븘�슂�븯�떎.
 		FileService service=new FileService();
 		String path= service.saveFile(upload, basePath, uploadFileName);
 		
@@ -91,7 +91,7 @@ public class UploadAction extends ActionSupport implements Preparable, ModelDriv
 //		animaldate 
 //		animalimg 
 	
-		//vo에 파일 이름을 저장
+		//vo�뿉 �뙆�씪 �씠由꾩쓣 ���옣
 		avo.setAnimalimg(uploadFileName);
 		AnimalDao.getDao().insertAnimal(avo);
 		
@@ -108,15 +108,15 @@ public class UploadAction extends ActionSupport implements Preparable, ModelDriv
 		
 		return SUCCESS;
 	}
-	//upload 를 위한 세터가 필요. 안그러면 nullpointerexception
-	//jsp에서 파일업로드를 캡슐화로 처리하지않는것중 하나가 struts2
-	//fileupload는 아파치 것이다. 이것은 서버에 보면 temp폴더가 있고 거기에
-	//임시로 저장이 된다. 
-	//그래서내가 만든 업로드 폴더로 가져와야한다.
+	//upload 瑜� �쐞�븳 �꽭�꽣媛� �븘�슂. �븞洹몃윭硫� nullpointerexception
+	//jsp�뿉�꽌 �뙆�씪�뾽濡쒕뱶瑜� 罹≪뒓�솕濡� 泥섎━�븯吏��븡�뒗寃껋쨷 �븯�굹媛� struts2
+	//fileupload�뒗 �븘�뙆移� 寃껋씠�떎. �씠寃껋� �꽌踰꾩뿉 蹂대㈃ temp�뤃�뜑媛� �엳怨� 嫄곌린�뿉
+	//�엫�떆濡� ���옣�씠 �맂�떎. 
+	//洹몃옒�꽌�궡媛� 留뚮뱺 �뾽濡쒕뱶 �뤃�뜑濡� 媛��졇���빞�븳�떎.
 	
-	//어떻게 가져와야 할까?
-	//1.일단 읽어와서 
-	//2.우리가 원하는 곳에 업로드 해야한다. 
+	//�뼱�뼸寃� 媛��졇���빞 �븷源�?
+	//1.�씪�떒 �씫�뼱���꽌 
+	//2.�슦由ш� �썝�븯�뒗 怨녹뿉 �뾽濡쒕뱶 �빐�빞�븳�떎. 
 	
 
 	public void setUpload(File upload) {

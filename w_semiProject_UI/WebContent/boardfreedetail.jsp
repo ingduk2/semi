@@ -65,10 +65,9 @@
 			    		<input type="hidden" name="boardno" value="${vo.boardno }"/>
 			        	<input type="text" name="commcontent" class="form-control input-sm " placeholder="Your comments">
 			            	<span class="input-group-btn">
-			                    <span class="btn btn-success btn-sm">&nbsp;
-			                    	<input type="submit" value=""/>
+			                    <button type="submit" value="" class="btn btn-success btn-sm">&nbsp;
 			                    	<span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Add
-			                    </span>
+			                    </button>
 			                </span>
 			        </div>		
 			        </form>			

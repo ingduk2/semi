@@ -33,11 +33,11 @@
 	}
 	#page_footer {
 		height: 60px;
-		background: #f5f5f5;
+/* 		background: #f5f5f5; */
 	}
 	.footer_text {
 		margin: 20px 0;
-		color: #777;
+/* 		color: #777; */
 	}
 </style>
 
@@ -240,17 +240,17 @@ function execDaumPostcode() {   //ÁÖ¼Ò °¡Á®¿À´Â api
 
 		<table><tr height="30px"><td></td></tr></table>
 		<button type="submit" class="btn btn-success btn-sm">¡¡¼ö¡¡¡¡Á¤¡¡</button>
+		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('withdraw?memid=${sessionScope['loginid']}')">¡¡Å»¡¡¡¡Åð¡¡</button>
 		
 		</form>
 		
-		<form action="withdraw">
+		
+<!-- 		<form action="withdraw"> -->
 <!-- 		<button type="button" class="btn btn-success btn-sm">¡¡Ãë¡¡¡¡¼Ò¡¡</button> -->
 <!-- 		<button type="button" class="btn btn-success btn-sm">¡¡Å»¡¡¡¡Åð¡¡</button> -->
-		<button type="submit" class="btn btn-success btn-sm">¡¡Å»¡¡¡¡Åð¡¡</button>
-		<input type="hidden" name="memid" value="${sessionScope['loginid']}">
-	
-	
-	</form>
+<%-- 		<input type="hidden" name="memid" value="${sessionScope['loginid']}"> --%>
+<!-- 		</form> -->
+
 </div>
 	<!--  bottom -->
 <%@ include file="bottom.jsp"%>
