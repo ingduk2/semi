@@ -4,6 +4,9 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     <mapper namespace="adoptioninfo"><!-- advo -->
    	
+ 
+   	
+   	
    	<!-- 봉사 내용 삽입 -->
    	<insert id="adoptInsert" parameterType="advo">
     	insert into adoptioninfo values(
