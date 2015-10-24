@@ -2,13 +2,13 @@ package vo;
 
 public class AdoptionInfoVO { //입양신청정보
 	private int adoptno, animalno, adoptscore;//입양신청번호, 입양대기동물번호, 신청자점수
-	private String memid, adoptxp, adoptresult; // 신청자아이디, 동물키워본경험, 키운결과
+	private String memid, adoptexp, adoptresult; // 신청자아이디, 동물키워본경험, 키운결과
 	private String adoptanimal, adoptalone, adopthouse; // 현재키우는동물, 혼자사는가, 주거형태
 	private String adoptincome, adoptempty, adoptmoveplan; // 수입현황, 집비는시간, 이사계획
 	private String adoptvolunteer, adoptfeedback, adoptage; // 봉사경험, 입양후공유, 나이
 	
 	//봉사활동 db와 이름이 달라 volunteer ->  adoptvolunteer 수정 
-	
+	//   adoptxp -> adoptexp 수정
 	
 	public int getAdoptno() {
 		return adoptno;
@@ -34,11 +34,12 @@ public class AdoptionInfoVO { //입양신청정보
 	public void setMemid(String memid) {
 		this.memid = memid;
 	}
-	public String getAdoptxp() {
-		return adoptxp;
+	
+	public String getAdoptexp() {
+		return adoptexp;
 	}
-	public void setAdoptxp(String adoptxp) {
-		this.adoptxp = adoptxp;
+	public void setAdoptexp(String adoptexp) {
+		this.adoptexp = adoptexp;
 	}
 	public String getAdoptresult() {
 		return adoptresult;

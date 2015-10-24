@@ -29,8 +29,8 @@ $(document).ready(function(){
 	$("#move2").click(function(){
 		document.getElementById("months").value=0;
 	});
+	
 });
-
 
 
   $(function(){
@@ -41,7 +41,9 @@ $(document).ready(function(){
 	  
      // 경험
 	 $('#input').click(function(){
-  	 if($('#adoptexp1').is(':checked')){	
+	 
+		 
+		 if($('#adoptexp1').is(':checked')){	
   		 $('#adoptexp').val($('#adoptexp1').val());	
   		   $num1=1;	       
 			}else{
@@ -95,7 +97,7 @@ $(document).ready(function(){
 	 	// 수입
 	 	if($('#inco').val()==100){
 	 		$('#adoptincome').val($('#inco').val());
-	 		$num4=1
+	 		$num4=1				
 	 	}else if($('#inco').val()==200){
 	 		$('#adoptincome').val($('#inco').val());
 	 		$num4=2
@@ -155,7 +157,7 @@ $(document).ready(function(){
 			$num7=0;
 		};
 		
-		
+
 		if($('#feed1').is(':checked')){
 			$('#adoptfeedback').val($('#feed1').val());
 			$num8=1;
@@ -165,18 +167,30 @@ $(document).ready(function(){
 		};	
 		
 			$score=$num1 + $num2 + $num3 + $num4 + $num5 + $num6 + $num7 + $num8 + $num9 ;
-			alert($score);
+			alert($score);   점수확인
 			$('#adoptscore').val($score)
-	
+			
+			
 	 });
-	 
+	
+	
+// 	 $('#input').on("click", function(){
+// 		 if($('.optradio6').val()=='nope' && $('.optradio7').val()=='nope'){
+// 			 alert("동의하지 않으면 등록하실수 없습니다.");
+// 			 $('.optradio6').val("");
+// 			 $('.optradio7').val("");
+// 		 }
+// 	 });
+
+     
+     
 		
 	 $('#join1').click(function(){
 		 confirm("동의하셨습니다.") 
 	 });
 	
 	 $('#join2').click(function(){
-		 confirm("동의하지 않으면 신청 할 수 없습니다.")
+		 alert("동의하지 않으면 신청 할 수 없습니다.")
 		 location="applyForm"
 	 });
  	  
@@ -184,12 +198,11 @@ $(document).ready(function(){
 			 confirm("동의하셨습니다.")		 
 		  });
 	$('#agr2').click(function(){
-		confirm("동의하지 않으면 신청 할 수 없습니다.")
+		alert("동의하지 않으면 신청 할 수 없습니다.");
 			 location="applyForm"
 		  });
-	 
-	});
-  
+
+  });      
   
   
   //-------------------------------------------------------
@@ -294,7 +307,7 @@ $(document).ready(function(){
 					</tr>
 				
 					
-					<tr> 
+					<tr>
 						<th>2</th>　　
 						<td align="left">　혼자 거주중 이십니까?</td>  
 					</tr>
@@ -433,10 +446,10 @@ $(document).ready(function(){
 						<th></th> 
 						<td align="left">　　
 							<label class="radio-inline">
-					     		<input type="radio" name="optradio6" id="join1">yes
+					     		<input type="radio" name="optradio6" id="join1" value="yes">yes
 						    	</label>
 					   		<label class="radio-inline">
-					      		<input type="radio" name="optradio6" id="join2">nope
+					      		<input type="radio" name="optradio6" id="join2" value="nope">nope
 					   		</label>
 						</td>  
 					</tr>
@@ -461,7 +474,7 @@ $(document).ready(function(){
 		
 			<table><tr height="30px"><!-- 높이 조절용 칸 떼우기 --><td></td></tr></table>
 			<button type="button" class="btn btn-success btn-sm" onclick="goUrl('board')">　취　　소　</button>
-			<button type="submit" class="btn btn-success btn-sm" id="input">　입양신청　</button>
+			<button type="submit" class="btn btn-success btn-sm" id="input" onclick="ch()">　입양신청　</button>
 			</div>
 	</div>
 <input type="hidden" name="adoptexp" id="adoptexp">
