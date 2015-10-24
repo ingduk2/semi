@@ -32,13 +32,13 @@
 						<td colspan="2" style="vertical-align: top;"> <!-- 헤더 위치용 칸떼우기 --> 
 							 <ul class="nav nav-tabs">
 							    	<li><a href="index">MainPage</a></li>
-								    <li><a href="">공지사항</a></li>
+								    <li><a href="boardnoticelist">공지사항</a></li>
 								    <li><a href="">실종신고</a></li>
 								    <li><a href="ib">발견보고</a></li>
 								    <li><a href="">보호동물</a></li>
-								    <li><a href="">분양대기</a></li>
+								    <li><a href="">입양대기</a></li>
 								    <li><a href="cal">봉사활동</a></li>
-								    <li><a href="board">커뮤니티</a></li>
+								    <li><a href="bfreelist">커뮤니티</a></li>
 								    <li><a href="">문의사항</a></li>
 								    <li><a href="chart">차트</a><li>
 <!-- 								    <li><a href="mypage">MyPage</a></li> -->

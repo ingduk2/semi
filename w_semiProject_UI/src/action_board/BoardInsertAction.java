@@ -47,20 +47,10 @@ ModelDriven<BoardVO>, ServletRequestAware {
 		System.out.println(vo.getMemid());
 		vo.setBoardip(boardip.getRemoteAddr());
 		
-		vo.setAnimalno(0);
-		//vo.setMemid();
-		vo.setBoardnopwd("1");
-//		vo.setBoardcontent("ads");
-//		vo.setBoarddate("Dfsa");
-//		vo.setBoardhit(0);
-//		vo.setBoardlvl(1);
-//		vo.setBoardno(1);
-		vo.setBoardnoname("1");
-//		vo.setBoardref(1);
-//		vo.setBoardseq(1);
-//		vo.setBoardtitle("sfd");
+		vo.setAnimalno(0); // 일반 게시판 용도 animalno 세팅
 		
 		BoardDao.getDao().insertAll(vo); 
+		
 		return SUCCESS;
 	}
 	

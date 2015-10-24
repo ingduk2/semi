@@ -13,10 +13,9 @@ public void setBoardno(int boardno) {
 
 @Override
 	public String execute() throws Exception {
-	System.out.println("sadfadsadsas"+boardno);	
-	BoardDao.getDao().boDelete(boardno);
-		System.out.println("sadfadsadsas"+boardno);
+	
+		BoardDao.getDao().deleteCommintarget(boardno);
+		BoardDao.getDao().boDelete(boardno);
 		return SUCCESS;
 	}
-	
 }

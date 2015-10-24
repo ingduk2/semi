@@ -60,6 +60,10 @@
     <delete id="bodelete" parameterType="int">
     	delete board where boardno=#{boardno}
     </delete>
+    <!-- 삭제 예정 게시글에 달려있는 모든 댓글 삭제 -->
+    <delete id="deletecomm" parameterType="int">
+		delete from commboard where boardno=#{boardno}
+    </delete>
     
     <update id="boupdate" parameterType="bvo">
     	update board set boardtitle=#{boardtitle}, boardcontent=#{boardcontent}, 

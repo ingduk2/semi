@@ -23,14 +23,25 @@
 
 			<!-- 요기밑에 주석 지워버릴거임 -->
 			 <s:iterator value="list"> <!-- 갑가져오기 -->
-			 <tr> <td width="30px"><s:property value="boardno"/></td><td><a href="boarddetail?boardno=${boardno}"><s:property value="boardtitle"/></a></td>
+			 <tr> <td width="30px"><s:property value="boardno"/></td><td><a href="bfreedetail?boardno=${boardno}"><s:property value="boardtitle"/></a></td>
 			 <td><s:property value="memid"/></td><td><s:property value="boarddate"/></td>
 			 <td><s:property value="boardhit"/></td> </tr>
 			 </s:iterator>
 			</tbody>
 			
 			<tfoot>
-				<tr> <td colspan="3"></td>  <td colspan="2"> <button type="button" class="btn btn-default btn-xs"><a href="boardwrite">글쓰기</a></button> </td> </tr>
+<!-- 				<tr> <td colspan="3"></td>  <td colspan="2"> <button type="button" class="btn btn-default btn-xs"><a href="bfreewrite">글쓰기</a></button> </td> </tr> -->
+				<tr> 
+					<td colspan="3"></td>  
+					<td colspan="2">
+						<s:if test="#session.loginid==null">
+							<button type="button" class="btn btn-default btn-xs"><a href="login">글쓰기</a></button>
+						</s:if>
+						<s:else>
+							<button type="button" class="btn btn-default btn-xs"><a href="bfreewrite">글쓰기</a></button>
+						</s:else>
+					</td>
+				</tr>
 			</tfoot>
 			
 			</table>

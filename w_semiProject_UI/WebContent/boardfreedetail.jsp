@@ -59,7 +59,7 @@
 			<tr>
 				<th>Comments</th>
 				<td colspan="6">
-				<form method="post" action="comminsertboard">
+				<form method="post" action="bfreecomm">
 			    	<div class="input-group col-xs-12">
 			    		<input type="hidden" name="memid" value="${sessionScope['loginid']}"/>
 			    		<input type="hidden" name="boardno" value="${vo.boardno }"/>
@@ -112,9 +112,9 @@
 		<s:url id="godelete" action="boarddelete">
 			<s:param name="boardno" value="vo.boardno"></s:param>
 		</s:url>
-		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('boardup?boardno=${vo.boardno}')" >　수   정　</button>
-		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('boarddelete?boardno=${vo.boardno}')">　삭　　제　</button>
-		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('board')">　목　　록　</button>
+		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('bfreeupdateinfo?boardno=${vo.boardno}')" >　수   정　</button>
+		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('bfreedelete?boardno=${vo.boardno}')">　삭　　제　</button>
+		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('bfreelist')">　목　　록　</button>
 	</div>		
 
 <input type="hidden" id="boardno" name="boardno" value="${vo.boardno}">

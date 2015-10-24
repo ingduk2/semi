@@ -5,60 +5,77 @@
 <struts>
 <package name="z-board" namespace="/" extends="struts-default">
 
-	<!-- 쓰기폼으로 -->
-	<action name="boardwrite">
-		<result>/boardwrite.jsp</result>
+	<!-- ===============boardnotice=============== -->
+	<!-- list page link -->
+	<action name="boardnoticelist" class="action_board.BoardAction"> <!-- BoardAction에서 boardcode에 따라 뿌려주도록 변경 - top 링크에서 boardcode 파라미터로 넘겨주게 설정해줘야 할 듯 -->
+		<result>/boardnoticelist.jsp</result>
+	</action>
+
+	<!-- write page link -->
+	<action name="boardnoticewrite">
+		<result>/boardnoticewrite.jsp</result>
+	</action>
+
+	<!-- detail page link -->
+	<action name="boardnoticedetail" class="action_board.BoardDetailAction">
+		<result>/boardnoticedetail.jsp</result>
+	</action>
+
+	<!-- update page link -->
+	<action name="boardnoticeupdateinfo" class="action_board.BoardDetailAction">
+		<result>/boardnoticeupdate.jsp</result>
+	</action>
+
+
+
+	<!-- ===============boardfree=============== -->
+	<!-- list page link -->
+	<action name="bfreelist" class="action_board.BoardAction"> <!-- BoardAction에서 boardcode에 따라 뿌려주도록 변경 - top 링크에서 boardcode 파라미터로 넘겨주게 설정해줘야 할 듯 -->
+		<result>/boardfreelist.jsp</result>
 	</action>
 	
-	
-	<!-- 게시판 입력 -->
-	<action name="insertat" class="action_board.BoardInsertAction">
-	<result type="redirectAction">
-		<param name="actionName">board</param>
-	</result>
-   </action>
-	
-		
-	
-	<!-- 상세보기폼 -->
-	<action name="boarddetail" class="action_board.BoardDetailAction">
-		<result>/boarddetail.jsp</result>
+	<!-- write page link -->
+	<action name="bfreewrite">
+		<result>/boardfreewrite.jsp</result>
 	</action>
-	
-	
-	<!-- 게시판 리스트 -->
-	<action name="board" class="action_board.BoardAction">
-		<result>/board.jsp</result>
-	</action>
-	
-   	<!-- 상세보기 삭제 --> 
-	<action name="boarddelete" class="action_board.BoardDeleteAction">
+	<!-- write -->
+	<action name="bfreewriteinsert" class="action_board.BoardInsertAction">
 		<result type="redirectAction">
-		<param name="actionName">board</param>
+			<param name="actionName">bfreelist</param>
 		</result>
 	</action>
 	
-	<!-- 상세보기 수정 -->
-		<!-- 수정 불러오기 -->
-	<action name="boardup" class="action_board.BoardDetailAction">
-		<result>/boardupdate.jsp</result>
+	<!-- detail page link -->
+	<action name="bfreedetail" class="action_board.BoardDetailAction">
+		<result>/boardfreedetail.jsp</result>
 	</action>
 	
-		<!-- 수정 하기 -->
-	<action name="boardupdate" class="action_board.BoardUpdateAction">
+	<!-- update page link -->
+	<action name="bfreeupdateinfo" class="action_board.BoardDetailAction">
+		<result>/boardfreeupdate.jsp</result>
+	</action>
+	<!-- update -->
+	<action name="bfreeupdate" class="action_board.BoardUpdateAction">
 		<result type="redirectAction">
-			<param name="actionName">board</param>
+			<param name="actionName">bfreelist</param>
 		</result>
 	</action>
-
-<action name="comminsertboard" class="action_board.CommentInsertAction">
-	<result type="redirectAction">
-		<param name="actionName">boarddetail</param>
-		<param name="boardno">${boardno}</param>
-	</result>
-</action>
-
-
 	
+	<!-- delete -->
+	<action name="bfreedelete" class="action_board.BoardDeleteAction">
+		<result type="redirectAction">
+			<param name="actionName">bfreelist</param>
+		</result>
+	</action>
+	
+	<!-- comment write -->
+	<action name="bfreecomm" class="action_board.CommentInsertAction">
+		<result type="redirectAction">
+			<param name="actionName">bfreedetail</param>
+			<param name="boardno">${boardno}</param>
+		</result>
+	</action>
+   	<!-- ===============boardfree=============== -->
+
 </package>
 </struts>
