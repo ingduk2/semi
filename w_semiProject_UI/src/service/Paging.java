@@ -69,7 +69,7 @@ public class Paging {
 				//�쁽�옱 �럹�씠吏�媛� �븘�땺 寃쎌슦�뿉�뒗 �럹�씠吏��쓽李⑥씠瑜� �몢硫� �맂�떎.
 				paging.append("<a href='").append(url);
 				paging.append("?nowPage=");
-				paging.append(printPage).append("'>");
+				paging.append(printPage).append(params).append("'>");
 				paging.append(printPage).append("</a>&nbsp;&nbsp;");
 			}
 			
@@ -85,6 +85,7 @@ public class Paging {
 		if(totalBlock > nowBlock){
 			next.append("<a href='").append(url);
 			next.append("?nowPage=").append(nowBlock * numPerBlock +1);
+			prev.append(params);
 			next.append("'>").append("</a>");
 		}else{
 			next.append("&nbsp;&nbsp;"); //�씠嫄� �뾾�븷踰꾨━硫� �닲寃⑥�寃뚮맂�떎. 留곹겕
