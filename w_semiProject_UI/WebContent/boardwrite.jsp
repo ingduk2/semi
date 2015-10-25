@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
     
- <script scr="js/board.js"></script>   
+    
   		<!--  header -->  
 <%@ include file="top.jsp"%>
+<script src="js/board.js"></script>
 
 <style>
 
@@ -20,21 +21,23 @@
 
 </style>
 
-	<form action="bfreeupdate">
+
 	<div>
-		
-		<h1>게시글수정<small>게시글수정을위한form임</small></h1>
-
-		
+	<form action="bwriteinsert"  method="post"> <!-- 게시판 입력 실행 -->
+		<input type="hidden" name="memid" value="${sessionScope['loginid']}"/>
+		<input type="hidden" name="boardcode" value="${boardcode}" />
+		<input type="hidden" name="boardnoname" value="x" />
+		<input type="hidden" name="boardnopwd" value="x" />
+		<h1>게시글작성<small>게시글작성을위한form임</small></h1>
 		<table><tr height="30px"><!-- 높이 조절용 칸 떼우기 --><td></td></tr></table>
-
+		
 		<table width="500px">	
-			<tr> <th colspan="2">게시글 수정</th> </tr>			
+			<tr> <th colspan="2">글쓰기</th> </tr>			
 			<tr>	
 				<th>title</th>	
 				<td>
-					<input class="form-control input-sm" placeholder="제목을 입력하세요" 
-					name="boardtitle" id="boardtitle" value="${vo.boardtitle }">
+					<input class="form-control input-sm" placeholder="제목을 입력하세요"
+					name="boardtitle" id="boardtitle">
 				</td>	
 			</tr>
 			
@@ -45,18 +48,20 @@
 			<tr>	
 				<td colspan="2"  height="500px">
 					<textarea class="form-control" rows="10" id="comment" placeholder="내용을 입력하세요"
-					name="boardcontent">${vo.boardcontent }</textarea>
+					name="boardcontent"></textarea>
 				</td>		
 			</tr>
 		</table>				
 
 		
 		<table><tr height="30px"><!-- 높이 조절용 칸 떼우기 --><td></td></tr></table>
-		<button type="submit" class="btn btn-success btn-sm" >　수정완료　</button>
-		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('bfreelist')">　수정취소　</button>		
+		<button type="submit" class="btn btn-success btn-sm" >　글 작 성　</button>
+		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('blist?boardcode=${boardcode}')">　취　　소　</button>
+		
+		</form>
 	</div>
-	<input type="hidden" name="boardno" value="${vo.boardno}">
-	</form>
+
+
 
 
 		<!--  bottom -->

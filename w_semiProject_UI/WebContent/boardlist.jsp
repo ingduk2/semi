@@ -23,7 +23,7 @@
 
 			<!-- 요기밑에 주석 지워버릴거임 -->
 			 <s:iterator value="list"> <!-- 갑가져오기 -->
-			 <tr> <td width="30px"><s:property value="boardno"/></td><td><a href="bfreedetail?boardno=${boardno}"><s:property value="boardtitle"/></a></td>
+			 <tr> <td width="30px"><s:property value="boardno"/></td><td><a href="bdetail?boardno=${boardno}&boardcode=${boardcode}"><s:property value="boardtitle"/></a></td>
 			 <td><s:property value="memid"/></td><td><s:property value="boarddate"/></td>
 			 <td><s:property value="boardhit"/></td> </tr>
 			 </s:iterator>
@@ -38,7 +38,7 @@
 							<button type="button" class="btn btn-default btn-xs"><a href="login">글쓰기</a></button>
 						</s:if>
 						<s:else>
-							<button type="button" class="btn btn-default btn-xs"><a href="bfreewrite">글쓰기</a></button>
+							<button type="button" class="btn btn-default btn-xs"><a href="bwrite?boardcode=${boardcode}">글쓰기</a></button>
 						</s:else>
 					</td>
 				</tr>

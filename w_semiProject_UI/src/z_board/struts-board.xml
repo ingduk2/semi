@@ -5,77 +5,57 @@
 <struts>
 <package name="z-board" namespace="/" extends="struts-default">
 
-	<!-- ===============boardnotice=============== -->
+	<!-- ===============board=============== -->
 	<!-- list page link -->
-	<action name="boardnoticelist" class="action_board.BoardAction"> <!-- BoardAction에서 boardcode에 따라 뿌려주도록 변경 - top 링크에서 boardcode 파라미터로 넘겨주게 설정해줘야 할 듯 -->
-		<result>/boardnoticelist.jsp</result>
-	</action>
-
-	<!-- write page link -->
-	<action name="boardnoticewrite">
-		<result>/boardnoticewrite.jsp</result>
-	</action>
-
-	<!-- detail page link -->
-	<action name="boardnoticedetail" class="action_board.BoardDetailAction">
-		<result>/boardnoticedetail.jsp</result>
-	</action>
-
-	<!-- update page link -->
-	<action name="boardnoticeupdateinfo" class="action_board.BoardDetailAction">
-		<result>/boardnoticeupdate.jsp</result>
-	</action>
-
-
-
-	<!-- ===============boardfree=============== -->
-	<!-- list page link -->
-	<action name="bfreelist" class="action_board.BoardAction"> <!-- BoardAction에서 boardcode에 따라 뿌려주도록 변경 - top 링크에서 boardcode 파라미터로 넘겨주게 설정해줘야 할 듯 -->
-		<result>/boardfreelist.jsp</result>
+	<action name="blist" class="action_board.BoardAction">
+		<result>/boardlist.jsp</result>
 	</action>
 	
 	<!-- write page link -->
-	<action name="bfreewrite">
-		<result>/boardfreewrite.jsp</result>
+	<action name="bwrite" class="action_board.BoardWriteEnterAction">
+		<result>/boardwrite.jsp</result>
 	</action>
 	<!-- write -->
-	<action name="bfreewriteinsert" class="action_board.BoardInsertAction">
+	<action name="bwriteinsert" class="action_board.BoardInsertAction">
 		<result type="redirectAction">
-			<param name="actionName">bfreelist</param>
+			<param name="actionName">blist</param>
+			<param name="boardcode">${vo.boardcode}</param>
 		</result>
 	</action>
 	
 	<!-- detail page link -->
-	<action name="bfreedetail" class="action_board.BoardDetailAction">
-		<result>/boardfreedetail.jsp</result>
+	<action name="bdetail" class="action_board.BoardDetailAction">
+		<result>/boarddetail.jsp</result>
 	</action>
 	
 	<!-- update page link -->
-	<action name="bfreeupdateinfo" class="action_board.BoardDetailAction">
-		<result>/boardfreeupdate.jsp</result>
+	<action name="bupdateinfo" class="action_board.BoardDetailAction">
+		<result>/boardupdate.jsp</result>
 	</action>
 	<!-- update -->
-	<action name="bfreeupdate" class="action_board.BoardUpdateAction">
+	<action name="bupdate" class="action_board.BoardUpdateAction">
 		<result type="redirectAction">
-			<param name="actionName">bfreelist</param>
+			<param name="actionName">bdetail</param>
+			<param name="boardno">${vo.boardno}</param>
 		</result>
 	</action>
 	
 	<!-- delete -->
-	<action name="bfreedelete" class="action_board.BoardDeleteAction">
+	<action name="bdelete" class="action_board.BoardDeleteAction">
 		<result type="redirectAction">
-			<param name="actionName">bfreelist</param>
+			<param name="actionName">blist</param>
+			<param name="boardcode">${vo.boardcode}</param>
 		</result>
 	</action>
 	
 	<!-- comment write -->
-	<action name="bfreecomm" class="action_board.CommentInsertAction">
+	<action name="bcomm" class="action_board.CommentInsertAction">
 		<result type="redirectAction">
-			<param name="actionName">bfreedetail</param>
+			<param name="actionName">bdetail</param>
 			<param name="boardno">${boardno}</param>
 		</result>
 	</action>
-   	<!-- ===============boardfree=============== -->
+   	<!-- ===============board=============== -->
 
 </package>
 </struts>

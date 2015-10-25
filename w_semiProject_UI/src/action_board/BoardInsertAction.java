@@ -16,20 +16,15 @@ public class BoardInsertAction implements Action, Preparable,
 ModelDriven<BoardVO>, ServletRequestAware {
 	private BoardVO vo;
 	private HttpServletRequest boardip;
-	//private String memid;
+
+	public BoardVO getVo() {
+		return vo;
+	}
 	
-//	public void setMemid(String memid) {
-//		this.memid = memid;
-//	}
-
-
-
 	@Override
 	public void setServletRequest(HttpServletRequest boardip) {
 		this.boardip=boardip;
 	}
-
-
 
 	@Override
 	public BoardVO getModel() {
@@ -39,11 +34,10 @@ ModelDriven<BoardVO>, ServletRequestAware {
 	@Override
 	public void prepare() throws Exception {
 		vo = new BoardVO();
-		
 	}
 
 	@Override
-   public String execute() throws Exception {
+	public String execute() throws Exception {
 		System.out.println(vo.getMemid());
 		vo.setBoardip(boardip.getRemoteAddr());
 		
@@ -53,6 +47,4 @@ ModelDriven<BoardVO>, ServletRequestAware {
 		
 		return SUCCESS;
 	}
-	
-
 }
