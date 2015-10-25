@@ -59,6 +59,14 @@ public class BoardDao {
  		ss.close();
  	}
  	
+ 	// 삭제하려는 게시글에 달려있는 모든 댓글 삭제
+ 	public void deleteCommintarget(int boardno) {
+ 		SqlSession ss = FactoryService.getFactory().openSession(true);
+ 		
+ 		ss.delete("board.deletecomm", boardno);
+ 		ss.close();
+ 	}
+ 	
  	
  	public void boUpdate(BoardVO vo){
  		SqlSession ss = FactoryService.getFactory().openSession(true);

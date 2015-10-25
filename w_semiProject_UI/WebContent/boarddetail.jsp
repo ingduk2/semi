@@ -59,16 +59,29 @@
 			<tr>
 				<th>Comments</th>
 				<td colspan="6">
-				<form method="post" action="comminsertboard">
+				<form method="post" action="bcomm">
 			    	<div class="input-group col-xs-12">
 			    		<input type="hidden" name="memid" value="${sessionScope['loginid']}"/>
 			    		<input type="hidden" name="boardno" value="${vo.boardno }"/>
-			        	<input type="text" name="commcontent" class="form-control input-sm " placeholder="Your comments">
+			    		
+			    		<s:if test="#session.loginid==null">
+			    		<input type="text" name="commcontent" class="form-control input-sm " placeholder="로그인을 해야 댓글을 작성할 수 있습니다." readonly="readonly" >
+			            	<span class="input-group-btn">
+			                    <button type="button" value="" class="btn btn-success btn-sm">&nbsp;
+			                    	<span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Add
+			                    </button>
+			                </span>			    		
+			    		</s:if>
+			    		
+			    		<s:else>
+			        	<input type="text" name="commcontent" class="form-control input-sm " placeholder="Your comments" >
 			            	<span class="input-group-btn">
 			                    <button type="submit" value="" class="btn btn-success btn-sm">&nbsp;
 			                    	<span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Add
 			                    </button>
 			                </span>
+			            </s:else>
+			            
 			        </div>		
 			        </form>			
 				</td>
@@ -105,15 +118,15 @@
 		
 		<s:url id="goreply" action="">
 		</s:url>
-		<s:url id="goupdate" action="boardup">
+		<s:url id="goupdate" action="bupdateinfo">
 			<s:param name="boardno" value="vo.boardno"></s:param>
 		</s:url>
-		<s:url id="godelete" action="boarddelete">
+		<s:url id="godelete" action="bdelete">
 			<s:param name="boardno" value="vo.boardno"></s:param>
 		</s:url>
-		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('boardup?boardno=${vo.boardno}')" >　수   정　</button>
-		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('boarddelete?boardno=${vo.boardno}')">　삭　　제　</button>
-		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('board')">　목　　록　</button>
+		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('bupdateinfo?boardno=${vo.boardno}')" >　수　　정　</button>
+		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('bdelete?boardno=${vo.boardno}')">　삭　　제　</button>
+		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('blist?boardcode=${vo.boardcode}')">　목　　록　</button>
 	</div>		
 
 <input type="hidden" id="boardno" name="boardno" value="${vo.boardno}">
