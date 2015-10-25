@@ -71,6 +71,16 @@
 					<tr> 
 						<td colspan="2" style="vertical-align: top;"> <!-- 헤더 위치용 칸떼우기 --> 
 							 <ul class="nav nav-tabs">
+							 		<!-- 
+							 			boardcode 구분
+							 			1 - 공지사항
+							 			2 - 커뮤니티(자유게시판)
+							 			3 - 문의사항(질문게시판)
+							 			4 - 실종신고 이미지 게시판
+							 			5 - 발견보고 이미지 게시판
+							 			6 - 보호동물 이미지 게시판
+							 			7 - 입양대기 이미지 게시판
+							 		 -->
 							    	<li><a href="index">MainPage</a></li>
 								    <li><a href="blist?boardcode=1">공지사항</a></li>
 								    <li><a href="#">실종신고</a></li>

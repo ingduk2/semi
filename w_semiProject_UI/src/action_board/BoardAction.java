@@ -44,7 +44,7 @@ public class BoardAction implements Action, Preparable, ModelDriven<BoardVO>{
 		
 		int total=0;
 		String url=null;
-		String params=null;
+		String params="";
 		if(vo.getChooseType()!=null){//yes search - exist choose type
 			total=BoardDao.getDao().getSearchCount(vo);
 			url="boardlist";
