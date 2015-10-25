@@ -5,7 +5,7 @@
     <mapper namespace="vapply">
 		<insert id="applyinsert" parameterType="vavo">
 			insert into vapply values
-			(vapply_seq.nextVal,1,#{volunteerno},sysdate)
+			(vapply_seq.nextVal,#{memid},#{volunteerno},sysdate)
 		</insert>
 		
 		<delete id="deletefk" parameterType="int">
@@ -14,10 +14,10 @@
 		</delete>
 		
 		<delete id="deleteapply" parameterType="fkvo">
-			delete from vapply where volunteerno=#{volunteerno} and memno=#{memno}
+			delete from vapply where volunteerno=#{volunteerno} and memid=#{memid}
 		</delete>
 		
 		<select id="applycnt" parameterType="fkvo" resultType="int">
-			select count(*) cnt from vapply where volunteerno=#{volunteerno} and memno=#{memno}
+			select count(*) cnt from vapply where volunteerno=#{volunteerno} and memid=#{memid}
 		</select>
     </mapper>

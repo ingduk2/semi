@@ -34,12 +34,16 @@
 	border : 1px solid red;
 	background-color: red;
 }
+.delete{
+	border : 1px solid green;
+	background-color: green;
+}
 </style>
 
 <script>
 //var seq[];
 function admin(){
-	alert('asdfasdfasdf');
+	//alert('asdfasdfasdf');
 	var currentLangCode = 'ko';
 	//var seq=0;
 	  $('#calendar').fullCalendar('destroy');
@@ -84,9 +88,9 @@ function admin(){
 	                    */
      				
 	                    var log=$('#volunteer').val();
-	                    alert(log);
+	                    //alert(log);
 	                    if(log=="admin"){
-	                    	 alert("관리");
+	                    	 //alert("관리");
 	                    	 $('#calendar').fullCalendar('removeEvents', 
 	       	                      calEvent._id);
 	                    	 
@@ -127,10 +131,17 @@ function admin(){
 	    	                  volunteerend : end.format() */
 	 	                        },
 	 	                        dataType: "html",
-	 	                        success: function() {
+	 	                        success: function(q) {
 	 	                        	//$('div p:contains("Test")').css('background','pink');
 	 	                          //$('div span:contains('+calEvent.title+')').css('background','red');
-	 	                         $('div span:contains('+calEvent.title+')').addClass('apply');
+	 	                          if(q==1){
+	 	                        	 $('div span:contains('+calEvent.title+')').removeClass('delete');
+	 	                         	$('div span:contains('+calEvent.title+')').addClass('apply');
+	 	                          }else{
+	 	                        	 $('div span:contains('+calEvent.title+')').removeClass('apply');
+	 	                        	 $('div span:contains('+calEvent.title+')').addClass('delete');
+	 	                        	
+	 	                          }
 	 	                          alert("성공..");
 	 	                        },
 	 	                        error: function(a, b) {
@@ -152,12 +163,12 @@ function admin(){
 	   select: function(start, end, event) {
 	    	
 		   var log=$('#volunteer').val();
-           alert(log);
+           //alert(log);
            if(log=="admin"){
 	    var title = prompt('Event Title:'); //값 입력.
 	    var seq=0;
 	    //1
-		alert("selected from: " + start.format() + ", to: " + end.format());
+		//alert("selected from: " + start.format() + ", to: " + end.format());
 	    
 	    //alert(calEvent._id);
 	     // 셀렉트된 결과를 서버로 전송
@@ -192,10 +203,10 @@ function admin(){
 		             },
 		             dataType: "html",
 		             success: function(q) {
-		                 alert("Data-:"+ q);
-		                 alert("pk-:"+q);
+		                 //alert("Data-:"+ q);
+		                 //alert("pk-:"+q);
 		                 seq=q;
-		                 alert(seq);
+		                 //alert(seq);
 		                 
 		                 var eventData;
 		         	    if (title) {
@@ -204,7 +215,7 @@ function admin(){
 		         	      start: start,
 		         	      end: end
 		         	     };
-		         	     alert("데이터 읽어오는데야?"); //2
+		         	     //alert("데이터 읽어오는데야?"); //2
 		         	     $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
 		         	    		//seq++;
 		         	    }

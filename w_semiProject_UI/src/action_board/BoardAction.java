@@ -45,17 +45,17 @@ public class BoardAction implements Action, Preparable, ModelDriven<BoardVO>{
 		int total=0;
 		String url=null;
 		String params="";
-		//problem count -> add where boardcode 
 		if(vo.getChooseType()!=null){//yes search - exist choose type
 			total=BoardDao.getDao().getSearchCount(vo);
-			url="board";
+
+			url="blist";
 			params="&boardcode="+vo.getBoardcode()+
 					"&chooseType="+vo.getChooseType()+
 					"&inputVal="+vo.getInputVal();
 		}else{// no search
 			//total= BoardDao.getDao().getTotalCount();
 			total=BoardDao.getDao().getCodeCount(vo);
-			url="board";
+			url="blist";
 			params="&boardcode="+vo.getBoardcode();
 		}
 		int numPerPage = 10;
@@ -65,7 +65,7 @@ public class BoardAction implements Action, Preparable, ModelDriven<BoardVO>{
 		
 		Paging page= new Paging(total, nowPage, numPerPage, numPerBlock, url, params);
 		
-		//페이징을 할 때 마다 start와 end값을 넘겨야 한다.
+		//�럹�씠吏뺤쓣 �븷 �븣 留덈떎 start�� end媛믪쓣 �꽆寃⑥빞 �븳�떎.
 		pagingCode=page.getPagingCode();
 		System.out.println(pagingCode);
 		System.out.println("-----------------------------");
@@ -74,15 +74,17 @@ public class BoardAction implements Action, Preparable, ModelDriven<BoardVO>{
 		System.out.println("Start : "+start);
 		System.out.println("End : "+end);
 		 
-		//페이지 영역값을  Dao에게 전달 후 list를 반
+		//�럹�씠吏� �쁺�뿭媛믪쓣  Dao�뿉寃� �쟾�떖 �썑 list瑜� 諛�
 		
-		//이렇게 하면 검색을 페이징 할 수 없다. 검색 기능안에 페이징을 집어넣어서 불러와야하는디..되나
+		//�씠�젃寃� �븯硫� 寃��깋�쓣 �럹�씠吏� �븷 �닔 �뾾�떎. 寃��깋 湲곕뒫�븞�뿉 �럹�씠吏뺤쓣 吏묒뼱�꽔�뼱�꽌 遺덈윭���빞�븯�뒗�뵒..�릺�굹
 		//start, end, choose
 		vo.setStart(start);
 		vo.setEnd(end);
 		//list=BoardDao.getDao().getPage(new PaginVO(start, end));
+
 		list = BoardDao.getDao().getBoard(vo); //검색 가능.
 		System.out.println(list.size());
+
 		return SUCCESS;
 	}
 	

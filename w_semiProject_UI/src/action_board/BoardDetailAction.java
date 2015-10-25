@@ -3,8 +3,6 @@ package action_board;
 import java.util.List;
 
 import com.opensymphony.xwork2.Action;
-import com.opensymphony.xwork2.ModelDriven;
-import com.opensymphony.xwork2.Preparable;
 
 import dao.BoardDao;
 import vo.BoardVO;

@@ -68,10 +68,5 @@
 			</table>
 	</div>
 	
-	
-
-
-
-
 	<!--  bottom -->
 <%@ include file="bottom.jsp"%>

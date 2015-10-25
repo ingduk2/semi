@@ -20,7 +20,7 @@
 
 </style>
 
-	<form action="boardupdate">
+	<form action="bupdate" method="post">
 	<div>
 		
 		<h1>게시글수정<small>게시글수정을위한form임</small></h1>
@@ -53,9 +53,10 @@
 		
 		<table><tr height="30px"><!-- 높이 조절용 칸 떼우기 --><td></td></tr></table>
 		<button type="submit" class="btn btn-success btn-sm" >　수정완료　</button>
-		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('board')">　수정취소　</button>		
+		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('blist?boardcode=${vo.boardcode}')">　수정취소　</button>		
 	</div>
 	<input type="hidden" name="boardno" value="${vo.boardno}">
+	<input type="hidden" name="boardcode" value="${vo.boardcode}">
 	</form>
 
 

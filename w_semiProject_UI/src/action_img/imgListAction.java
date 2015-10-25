@@ -13,7 +13,7 @@ public class imgListAction extends ActionSupport{
 	private String pagingCode;
 	private int nowPage;
 	//private List<BoardVO> list;
-	//리스트 부분 작성.
+	//由ъ뒪�듃 遺�遺� �옉�꽦.
 	private List<AnimalVO> list;
 	
 
@@ -25,21 +25,21 @@ public class imgListAction extends ActionSupport{
 	
 	@Override
 	public String execute() throws Exception {
-		int numPerPage = 12; //건들면 안됨.
-		int numPerBlock= 5;  //아래에 몇페이지 띄워줄지 정해줌
+		int numPerPage = 12; //嫄대뱾硫� �븞�맖.
+		int numPerBlock= 5;  //�븘�옒�뿉 紐뉙럹�씠吏� �쓣�썙以꾩� �젙�빐以�
 		//int total=BoardDao.getDao().getTotalCount();
 		int total=AnimalDao.getDao().getTotalCount();
-		//img게시판의 total 구하는 dao와 query 필요.
+		//img寃뚯떆�뙋�쓽 total 援ы븯�뒗 dao�� query �븘�슂.
 		
 		
 	
 		//System.out.println("Total : "+total);
 		
-		//페이징된 숫자를 눌렀을 때 다시 돌아올 struts2의 <action name=????>
+		//�럹�씠吏뺣맂 �닽�옄瑜� �닃���쓣 �븣 �떎�떆 �룎�븘�삱 struts2�쓽 <action name=????>
 		String url="ib";
 		Paging page= new Paging(total, nowPage, numPerPage, numPerBlock, url, "");
 		
-		//페이징을 할 때 마다 start와 end값을 넘겨야 한다.
+		//�럹�씠吏뺤쓣 �븷 �븣 留덈떎 start�� end媛믪쓣 �꽆寃⑥빞 �븳�떎.
 		pagingCode=page.getPagingCode();
 		System.out.println(pagingCode);
 		System.out.println("-----------------------------");
@@ -48,9 +48,9 @@ public class imgListAction extends ActionSupport{
 		System.out.println("Start : "+start);
 		System.out.println("End : "+end);
 		
-		//페이지 영역값을  Dao에게 전달 후 list를 반
+		//�럹�씠吏� �쁺�뿭媛믪쓣  Dao�뿉寃� �쟾�떖 �썑 list瑜� 諛�
 		
-		//페이징 된 12개의 리스트만 들고옴.
+		//�럹�씠吏� �맂 12媛쒖쓽 由ъ뒪�듃留� �뱾怨좎샂.
 		//list=BoardDao.getDao().getList(new PaginVO(start, end));
 		list=AnimalDao.getDao().getList(new PaginVO(start, end));
 		

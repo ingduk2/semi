@@ -5,7 +5,14 @@ public class MemberVO {//회원정보
 	private String membirth, memtel, mempost, memjibunaddr, memdoroaddr;
 					//생년월일, 전화번호, 우편번호, 지번주소, 도로 주소
 	private String memtelf, memtelb; // 전호번호 조합에 사용. f-앞 / b-뒤
+	private int memage; //나이계산용으로 만듬
 	
+	public int getMemage() {
+		return memage;
+	}
+	public void setMemage(int memage) {
+		this.memage = memage;
+	}
 	public String getMemtelf() {
 		return memtelf;
 	}

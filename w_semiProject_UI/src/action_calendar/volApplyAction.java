@@ -14,6 +14,7 @@ public class volApplyAction implements Action, Preparable, ModelDriven<VapplyVO>
 	
 	private VapplyVO vo;
 	private volFkVO fvo;
+	private String seq;
 	@Override
 	public String execute() throws Exception {
 		//vapplyno는 seq로 해결.
@@ -23,7 +24,7 @@ public class volApplyAction implements Action, Preparable, ModelDriven<VapplyVO>
 		//date는 그냥 하면됨.
 		
 		System.out.println("apply action");
-	
+		
 		System.out.println(vo.getMemid());
 		System.out.println(vo.getVolunteerno());
 		//volfkvo 셋팅.
@@ -37,13 +38,20 @@ public class volApplyAction implements Action, Preparable, ModelDriven<VapplyVO>
 		int cnt=vapplyDao.getDao().applyCnt(fvo);
 		if(cnt==0){
 			vapplyDao.getDao().applyInsert(vo);
+			seq="1";
 		}else{
 			vapplyDao.getDao().deleteApply(fvo);
+			seq="0";
 		}
 		
-		
+		System.out.println("--"+seq);
 		
 		return SUCCESS;
+	}
+
+
+	public String getSeq() {
+		return seq;
 	}
 
 

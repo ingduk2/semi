@@ -4,6 +4,7 @@
     
   		<!--  header -->  
 <%@ include file="top.jsp"%>
+<script src="js/board.js"></script>
 
 <style>
 
@@ -22,9 +23,13 @@
 
 
 	<div>
-	<form action="insertat"  method="post"> <!-- 게시판 입력 실행 -->
-		<input type="text" name="memid" value="${sessionScope['loginid']}"/>
-		<input type="text" name="boardcode" value="${boardcode}"/>	
+
+	<form action="bwriteinsert"  method="post"> <!-- 게시판 입력 실행 -->
+		<input type="hidden" name="memid" value="${sessionScope['loginid']}"/>
+		<input type="hidden" name="boardcode" value="${boardcode}" />
+		<input type="hidden" name="boardnoname" value="x" />
+		<input type="hidden" name="boardnopwd" value="x" />
+
 		<h1>게시글작성<small>게시글작성을위한form임</small></h1>
 		<table><tr height="30px"><!-- 높이 조절용 칸 떼우기 --><td></td></tr></table>
 		
@@ -53,7 +58,7 @@
 		
 		<table><tr height="30px"><!-- 높이 조절용 칸 떼우기 --><td></td></tr></table>
 		<button type="submit" class="btn btn-success btn-sm" >　글 작 성　</button>
-		<button type="button" class="btn btn-success btn-sm">　취　　소　</button>
+		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('blist?boardcode=${boardcode}')">　취　　소　</button>
 		
 		</form>
 	</div>

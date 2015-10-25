@@ -21,7 +21,7 @@
 	<result>/ingdukcallendar.jsp</result>
 </action>
 <action name="applyservice" class="action_calendar.volApplyAction">
-	<result>/ingdukcallendar.jsp</result>
+	<result>/getseq.jsp</result>
 </action>
 <action name="getseq" class="action_calendar.volGetseq">
 	 <result>/getseq.jsp</result> 

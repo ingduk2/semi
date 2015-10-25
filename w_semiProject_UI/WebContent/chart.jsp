@@ -39,8 +39,8 @@ function test() {
 	    	}
 	     
 	    }
-	    alert(opt.length);
-	    alert(opt);
+	    //alert(opt.length);
+	    //alert(opt);
 	    /* alert(opt1.length);
 	    alert(opt2.length);
 	    alert(opt3.length);
