@@ -6,6 +6,7 @@
 <%@ include file="top.jsp"%>
 	<div id="bg">
 		<img src="img/boardTitle.png" width="200px">
+		<input type="text" value="${boardcode }"/>
 		<table>
 			<thead style="font-weight:bold; color:black;">
 				<tr id="title"> <td colspan="2" width="300px">제목</td><td width="180px">작성자</td><td width="100px">작성일</td><td>조회</td> </tr>
@@ -30,7 +31,7 @@
 			</tbody>
 			
 			<tfoot>
-				<tr> <td colspan="3"></td>  <td colspan="2"> <button type="button" class="btn btn-default btn-xs"><a href="boardwrite">글쓰기</a></button> </td> </tr>
+				<tr> <td colspan="3"></td>  <td colspan="2"> <button type="button" class="btn btn-default btn-xs"><a href="boardwrite?boardcode=${boardcode}">글쓰기</a></button> </td> </tr>
 			</tfoot>
 			
 			</table>
@@ -44,6 +45,7 @@
 	<!-- <td></td> -->	
 						<td> &nbsp;
 								<!--  다이나믹쿼리로 검색기능 추가할 부분 -->
+							  <input type="hidden" value="${boardcode }"/>
 						      <select class="form-control input-sm" id="chooseType" name="chooseType">
 							        <option value="1">제목</option>
 							        <option value="2">작성자</option>

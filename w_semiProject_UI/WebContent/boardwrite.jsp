@@ -23,7 +23,8 @@
 
 	<div>
 	<form action="insertat"  method="post"> <!-- 게시판 입력 실행 -->
-		<input type="text" name="memid" value="${sessionScope['loginid']}"/>	
+		<input type="text" name="memid" value="${sessionScope['loginid']}"/>
+		<input type="text" name="boardcode" value="${boardcode}"/>	
 		<h1>게시글작성<small>게시글작성을위한form임</small></h1>
 		<table><tr height="30px"><!-- 높이 조절용 칸 떼우기 --><td></td></tr></table>
 		

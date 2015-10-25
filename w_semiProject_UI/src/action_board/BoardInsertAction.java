@@ -22,11 +22,17 @@ ModelDriven<BoardVO>, ServletRequestAware {
 //		this.memid = memid;
 //	}
 
-
+	
 
 	@Override
 	public void setServletRequest(HttpServletRequest boardip) {
 		this.boardip=boardip;
+	}
+
+
+
+	public BoardVO getVo() {
+		return vo;
 	}
 
 
@@ -47,6 +53,7 @@ ModelDriven<BoardVO>, ServletRequestAware {
 		System.out.println(vo.getMemid());
 		vo.setBoardip(boardip.getRemoteAddr());
 		
+		System.out.println();
 		vo.setAnimalno(0);
 		//vo.setMemid();
 		vo.setBoardnopwd("1");

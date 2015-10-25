@@ -6,7 +6,18 @@
 <package name="z-board" namespace="/" extends="struts-default">
 
 	<!-- 쓰기폼으로 -->
-	<action name="boardwrite">
+	<!-- <action name="boardwrite">
+		<result type="redirectAction">
+			<param name="actionName">write</param>
+			<param name="boardcode">${boardcode}</param>
+		</result>
+	</action> -->
+	
+	<action name="boardwrite" class="action_board.BoardCodeAction">
+		<result>/boardwrite.jsp</result>
+	</action>
+	
+	<action name="write">
 		<result>/boardwrite.jsp</result>
 	</action>
 	
@@ -15,6 +26,7 @@
 	<action name="insertat" class="action_board.BoardInsertAction">
 	<result type="redirectAction">
 		<param name="actionName">board</param>
+		<param name="boardcode">${vo.boardcode}</param>
 	</result>
    </action>
 	

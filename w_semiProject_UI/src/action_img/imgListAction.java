@@ -37,7 +37,7 @@ public class imgListAction extends ActionSupport{
 		
 		//페이징된 숫자를 눌렀을 때 다시 돌아올 struts2의 <action name=????>
 		String url="ib";
-		Paging page= new Paging(total, nowPage, numPerPage, numPerBlock, url, null);
+		Paging page= new Paging(total, nowPage, numPerPage, numPerBlock, url, "");
 		
 		//페이징을 할 때 마다 start와 end값을 넘겨야 한다.
 		pagingCode=page.getPagingCode();
@@ -83,7 +83,4 @@ public class imgListAction extends ActionSupport{
 	public void setNowPage(int nowPage) {
 		this.nowPage = nowPage;
 	}
-
-	
-	
 }

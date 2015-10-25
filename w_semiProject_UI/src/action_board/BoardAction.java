@@ -23,7 +23,7 @@ public class BoardAction implements Action, Preparable, ModelDriven<BoardVO>{
 	}
 	public List<BoardVO> getList() {
 		return list;
-	}	
+	}
 
 	@Override
 	public BoardVO getModel() {
@@ -44,14 +44,19 @@ public class BoardAction implements Action, Preparable, ModelDriven<BoardVO>{
 		
 		int total=0;
 		String url=null;
-		String params=null;
+		String params="";
+		//problem count -> add where boardcode 
 		if(vo.getChooseType()!=null){//yes search - exist choose type
 			total=BoardDao.getDao().getSearchCount(vo);
 			url="board";
-			params="&chooseType="+vo.getChooseType()+"&inputVal="+vo.getInputVal();
+			params="&boardcode="+vo.getBoardcode()+
+					"&chooseType="+vo.getChooseType()+
+					"&inputVal="+vo.getInputVal();
 		}else{// no search
-			total= BoardDao.getDao().getTotalCount();
+			//total= BoardDao.getDao().getTotalCount();
+			total=BoardDao.getDao().getCodeCount(vo);
 			url="board";
+			params="&boardcode="+vo.getBoardcode();
 		}
 		int numPerPage = 10;
 		int numPerBlock= 5;
@@ -77,6 +82,7 @@ public class BoardAction implements Action, Preparable, ModelDriven<BoardVO>{
 		vo.setEnd(end);
 		//list=BoardDao.getDao().getPage(new PaginVO(start, end));
 		list = BoardDao.getDao().getBoard(vo); //검색 가능.
+		System.out.println(list.size());
 		return SUCCESS;
 	}
 	

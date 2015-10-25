@@ -102,4 +102,11 @@ public class BoardDao {
  		ss.close();
  		return scnt;
  	}
+ 	
+ 	public int getCodeCount(BoardVO bvo){
+ 		SqlSession ss=FactoryService.getFactory().openSession();
+ 		int ccnt=ss.selectOne("board.getcodecnt",bvo);
+ 		ss.close();
+ 		return ccnt;
+ 	}
 }
