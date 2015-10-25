@@ -23,12 +23,25 @@
 <script>
 $(document).ready(function(){
 	
+	$("#adoptexp1").click(function(){
+        $('#collapseOne').show();
+		
+	});
+	
 	$("#adoptexp2").click(function(){
 		document.getElementById("experience").selectedIndex=0;
+        $('#collapseOne').hide();
 	});   //end inexperience click event
+	
+	
+	$("#move1").click(function(){
+		$('.panel-body').show();
+	});
+	
 	
 	$("#move2").click(function(){
 		document.getElementById("months").value=0;
+		$('.panel-body').hide();
 	});
 	
 			if ($('#adoptage').val() <= 19) {			
@@ -306,6 +319,7 @@ $(document).ready(function(){
 					      		<input type="radio"  name="optradio1" id="adoptexp2" value="nope" 
 					      		data-toggle="collapse" data-target="#collapseOne" >nope
 					   		</label>
+		
 					   		<div id="collapseOne" class="panel-collapse collapse">
             					<div class="panel-body">
                 					<p>가장 최근에 함께하였던 동물은 어떻게 되었습니까?</p>
@@ -320,7 +334,6 @@ $(document).ready(function(){
 									</div>
 					            </div>
 					        </div>
-					   		
 					   		
 					   		
 						</td>  
