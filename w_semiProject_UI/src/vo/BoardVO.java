@@ -1,11 +1,11 @@
 package vo;
 
-public class BoardVO { //�Խ���
-	private int boardcode, boardno, boardhit, animalno; //�Խ����ڵ�, �Խù���ȣ, ��ȸ�� ������Ϲ�ȣ
-	private int boardref, boardseq, boardlvl; // ���(����), ���(��ۼ���), ��۰���(Ʈ���ܰ�)
-	private String boardtitle, memid, boardcontent, boarddate; //����, ȸ�����̵�(�ۼ���), ����, �ۼ����� 
-	private String boardip, boardnoname, boardnopwd; //�ۼ��� ip, ��ȸ���̸�, ��ȸ�����
-	private String chooseType, inputVal; // �پƳ��� �����̿��� ����...
+public class BoardVO { //占쌉쏙옙占쏙옙
+	private int boardcode, boardno, boardhit, animalno; //占쌉쏙옙占쏙옙占쌘듸옙, 占쌉시뱄옙占쏙옙호, 占쏙옙회占쏙옙 占쏙옙占쏙옙占쏙옙球占싫�
+	private int boardref, boardseq, boardlvl; // 占쏙옙占�(占쏙옙占쏙옙), 占쏙옙占�(占쏙옙蒡占쏙옙占�), 占쏙옙方占쏙옙占�(트占쏙옙占쌤곤옙)
+	private String boardtitle, memid, boardcontent, boarddate; //占쏙옙占쏙옙, 회占쏙옙占쏙옙占싱듸옙(占쌜쇽옙占쏙옙), 占쏙옙占쏙옙, 占쌜쇽옙占쏙옙占쏙옙 
+	private String boardip, boardnoname, boardnopwd; //占쌜쇽옙占쏙옙 ip, 占쏙옙회占쏙옙占싱몌옙, 占쏙옙회占쏙옙占쏙옙占�
+	private String chooseType, inputVal; // 占쌕아놂옙占쏙옙 占쏙옙占쏙옙占싱울옙占쏙옙 占쏙옙占쏙옙...
 	private int start, end;
 	
 	public int getStart() {

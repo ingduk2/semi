@@ -76,7 +76,15 @@
 								    <li><a href="">실종신고</a></li>
 								    <li><a href="ib?boardcode=5">발견보고</a></li>
 								    <li><a href="">보호동물</a></li>
-								    <li><a href="">분양대기</a></li>
+								    
+								    <!-- 분양.... test -->
+								    <s:if test="#session.loginid==null">
+								    <li><a href="login">분양대기</a></li>
+								    </s:if>
+								    <s:else>
+								    <li><a href="adopt">분양대기</a></li>
+								    </s:else>
+								    
 									<li><a href="cal">봉사활동</a></li>
 								    <li><a href="board?boardcode=1">커뮤니티</a></li>
 								    <li><a href="#">문의사항</a></li>
@@ -88,6 +96,7 @@
 								    </s:if>
 								    <s:else>
 								    	<li><a href="mypage?memid=${sessionScope['loginid']}">MyPage</a></li>
+						
 								    </s:else>
 	  						</ul>
 						</td>  

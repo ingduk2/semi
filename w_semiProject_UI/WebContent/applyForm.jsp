@@ -22,6 +22,7 @@
 
 <script>
 $(document).ready(function(){
+	
 	$("#adoptexp2").click(function(){
 		document.getElementById("experience").selectedIndex=0;
 	});   //end inexperience click event
@@ -30,6 +31,16 @@ $(document).ready(function(){
 		document.getElementById("months").value=0;
 	});
 	
+			if ($('#adoptage').val() <= 19) {			
+			 alert("부모님의 동의가 필요합니다. ")	
+				
+				// 일단 보드로 이동하게 했음.
+				location="board";
+			}else{
+				alert("입양신청이가능합니다.");	
+				};
+				
+	
 });
 
 
@@ -37,12 +48,16 @@ $(document).ready(function(){
 	 $score=0;
      $num1=0; $num2=0; $num3=0; 
      $num4=0; $num5=0; $num6=0; 
-     $num7=0; $num8=0; $num9=0;
-	  
-     // 경험
-	 $('#input').click(function(){
-	 
-		 
+     $num7=0; $num8=0; $num9=0; 
+     $num10=0; 
+     
+//      if($('#adoptage')<20){
+//     		alert("부모님의 동의가 필요합니다.")
+//     		location="board"
+//     		};
+     
+	 $('#input').click(function(){ 
+		// 경험	 
 		 if($('#adoptexp1').is(':checked')){	
   		 $('#adoptexp').val($('#adoptexp1').val());	
   		   $num1=1;	       
@@ -64,6 +79,8 @@ $(document).ready(function(){
 	  	      }else if($('#experience').val()==4){
 	  			  $('#adoptresult').val("파양");
 	  			  $num2=-1
+	  	       }else{
+	  	    	 $('#adoptresult').val("nope"); 
 	  	       };
 	  
 	
@@ -81,16 +98,16 @@ $(document).ready(function(){
 	    //주거환경?
 	 	if($('#house').val()==1){
 	 		$('#adopthouse').val("단독주택");
-	 		num9=2;
+	 		$num9=2;
 	 	}else if($('#house').val()==2){
 	 		$('#adopthouse').val("전원주택");
-	 		num9=1;
+	 		$num9=1;
 	 	}else if($('#house').val()==3){
 	 		$('#adopthouse').val("아파트");
-	 		num9=0;
+	 		$num9=0;
 	 	}else if($('#house').val()==4){
 	 		$('#adopthouse').val("다세대주택");
-	 		num9=-1;
+	 		$num9=-1;
 	 	};
 	 	
 	 	
@@ -164,24 +181,27 @@ $(document).ready(function(){
 		}else{
 			$('#adoptfeedback').val($('#feed2').val());
 			$num8=-1;
-		};	
+		};
 		
-			$score=$num1 + $num2 + $num3 + $num4 + $num5 + $num6 + $num7 + $num8 + $num9 ;
-			alert($score);   점수확인
-			$('#adoptscore').val($score)
-			
-			
+		
+		if($('#adoptage')>20 && $('#adoptage')<=25){
+			$num10=1;
+		}else if($('#adoptage')>25 && $('#adoptage')<=30){
+			$num10=2;
+		}else if($('#adoptage')>30 && $('#adoptage')<=35){
+			$num10=3;
+		}else if($('#adoptage')>35){
+			$num10=4;
+		}
+		
+		
+		
+			$score = $num1 + $num2 + $num3 + $num4 + $num5 + $num6 + $num7 + $num8 + $num9+ $num10;
+			alert("점수 : "+$score); 
+			$('#adoptscore').val($score);		
 	 });
 	
 	
-// 	 $('#input').on("click", function(){
-// 		 if($('.optradio6').val()=='nope' && $('.optradio7').val()=='nope'){
-// 			 alert("동의하지 않으면 등록하실수 없습니다.");
-// 			 $('.optradio6').val("");
-// 			 $('.optradio7').val("");
-// 		 }
-// 	 });
-
      
      
 		
@@ -479,7 +499,7 @@ $(document).ready(function(){
 	</div>
 <input type="hidden" name="adoptexp" id="adoptexp">
 <input type="hidden" name="adoptresult" id="adoptresult">
-<input type="hidden" name="adoptanimal" id="adoptanimal" value="123"> <!-- 임시로 -->
+<input type="hidden" name="adoptanimal" id="adoptanimal" value="강아지도고양이도아닌무언가"> <!-- 임시로 -->
 <input type="hidden" name="adoptalone" id="adoptalone">
 <input type="hidden" name="adopthouse" id="adopthouse">
 <input type="hidden" name="adoptincome" id="adoptincome">
@@ -487,10 +507,10 @@ $(document).ready(function(){
 <input type="hidden" name="adoptmoveplan" id="adoptmoveplan">
 <input type="hidden" name="adoptvolunteer" id="adoptvolunteer">
 <input type="hidden" name="adoptfeedback" id="adoptfeedback">
-<input type="hidden" name="adoptage" id="adoptage" value="20">
+<input type="hidden" name="adoptage" id="adoptage" value="${mvo.memage }">
 <input type="hidden" name="adoptscore" id="adoptscore">
-<input type="hidden" name="memid" id="memid" value="뭐임">	
-<input type="hidden" name="adoptvolunteer" id="adoptvolunteer">
+<input type="hidden" name="memid" id="memid" value="${mvo.memid }">	
+<input type="hidden" name="adoptvolunteer" id="adoptvolunteer"> 
 
 </form>
 	

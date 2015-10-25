@@ -5,18 +5,18 @@
 <struts>
 <package name="x_adopt" namespace="/" extends="struts-default">
 
-	
-	<!-- 봉시신청 정보 불러오기 -->
-<!-- 	<action name="adoptinfo" class="action.Adopt_id_age_Action"> -->
-<!-- 		<result> -->
-<!-- 			<param name="actionName">/applyForm</param> -->
-<!-- 			<param name="memid">${memid}</param> -->
-<!-- 		</result> -->
-<!-- 	</action> -->
+ 	<!-- 봉시신청 정보 불러오기 --> 
+	<action name="applyForm" class="action_adopt.Adopt_id_age_Action">
+		<result>/applyForm.jsp</result>
+	</action>
 	
 	<!-- 봉사신청-->
-	<action name="applyForm">
-		<result>/applyForm.jsp</result>
+<!-- 	<action name="applyForm"> -->
+<!-- 		<result>/applyForm.jsp</result> -->
+<!-- 	</action> -->
+	
+	<action name="adopt">
+		<result>/adopttest.jsp</result>
 	</action>
 	
 	
